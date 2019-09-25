@@ -2,10 +2,16 @@ const express = require('express');
 const router = express.Router();
 
 const accControllers = require('./controllers/account');
+const workControllers = require('./controllers/worker');
 const middleware = require('../utils/middleware');
 
+// ACCOUNT
+router.post("/signUp", middleware.validationUserData, accControllers.createAccount);
+router.get("/account", accControllers.getAccountByLogin);
 
-router.post('/signUp', middleware.validationUserData, accControllers.createAccount);
+// WORKER
+router.post("/createWorker", middleware.validationWorkerData, workControllers.createWorker);
+router.get("/worker/:id", workControllers.getWorkerById);
 
 /*router.get('/account', accControllers.getAllAccounts);
 

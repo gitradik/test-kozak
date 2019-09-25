@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { baseUrl } from '../baseURL';
 
-export const signUp = (data) => axios.post(baseUrl + "account", data);
+export const signUp = (data) => axios.post(baseUrl + "signUp", data);
 
 /*export const login = (data) => axios.post(baseUrl + "login", data);
 export const accByToken = () => axios.post(baseUrl + "token", null, config);
