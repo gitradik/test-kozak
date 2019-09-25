@@ -4,6 +4,7 @@ const app = express();
 const router = require('./router/index');
 const errorHandler = require('./utils/errors/errorHandler');
 const port = 3001;
+require('./db/mongoose');
 
 app.use(cors());
 app.use(express.json());

@@ -1,13 +1,8 @@
-const {hashPassword, getToken, login, yupAccount, pushAccount, tokenViability} = require('./account/middleware');
+const { validationUserData } = require('./account/middleware');
 
 const middleware = {
     // ACCOUNT
-    hashPassword,
-    getToken,
-    login,
-    yupAccount,
-    pushAccount,
-    tokenViability,
+    validationUserData
 };
 
 module.exports = middleware;

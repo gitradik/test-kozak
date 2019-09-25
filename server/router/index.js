@@ -5,7 +5,7 @@ const accControllers = require('./controllers/account');
 const middleware = require('../utils/middleware');
 
 
-router.post('/signUp', accControllers.createAccount);
+router.post('/signUp', middleware.validationUserData, accControllers.createAccount);
 
 /*router.get('/account', accControllers.getAllAccounts);
 

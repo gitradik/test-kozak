@@ -1,9 +1,12 @@
-module.exports.createAccount = async (req, res, next) => {
-    try {
-        res.send({hello: "world"});
-    } catch (err) {
+const { User } = require('../../../models/');
 
-    }
+module.exports.createAccount = (req, res, next) => {
+    const user = new User(req.body);
+    user.save()
+        .then(created => {
+            res.json(created);
+        })
+        .catch(err => next({path: "account_data"}));
 };
 
 /*
