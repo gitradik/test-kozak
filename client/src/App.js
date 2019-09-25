@@ -5,18 +5,25 @@ import './App.css';
 import history from './utils/history';
 import Home from "./pages/Home/Home";
 import SignUp from "./pages/SignUp/SignUp";
+import SignIn from "./pages/SignIn/SignIn";
+import redirectToHome from "./utils/pageNotFound";
+import PrivateRouterHome from "./utils/privateRouters/PrivateRouterHome";
+import PrivateRouterSingInUp from "./utils/privateRouters/PrivateRouterSingInUp";
+
 
 function App() {
-  return (
-    <div className="App">
-        <Router history={history}>
-          <Switch>
-            <Route exact path="/" component={Home}/>
-            <Route exact path="/signUp" component={SignUp}/>
-          </Switch>
-        </Router>
-    </div>
-  );
+    return (
+        <div className="App">
+            <Router history={history}>
+                <Switch>
+                    <PrivateRouterHome exact path="/" component={Home}/>
+                    <PrivateRouterSingInUp path="/sign-up" component={SignUp}/>
+                    <PrivateRouterSingInUp path="/sign-in" component={SignIn}/>
+                    <Route path='*' exact={true} component={redirectToHome}/>
+                </Switch>
+            </Router>
+        </div>
+    );
 }
 
 export default App;

@@ -1,18 +1,23 @@
 import React, {Component} from 'react';
 import styles from './Home-module.sass';
-import EntryButton from "../../components/EntryButton/EntryButton";
+import connect from 'react-redux/es/connect/connect';
 
 class Home extends Component {
+    constructor(props) {
+        super(props);
+    }
+
     render() {
         return (
             <div className={styles.home}>
-                <EntryButton
-                    content="SignUp"
-                    link="/signUp"
-                />
             </div>
         );
     }
 }
 
-export default Home;
+const mapStateToProps = (state) => {
+    const {account} = state.accountReducer;
+    return {account};
+};
+
+export default connect(mapStateToProps)(Home);
