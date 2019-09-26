@@ -1,10 +1,18 @@
-import React from 'react';
-import {Redirect, Route} from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { Redirect, Route } from 'react-router-dom';
 import connect from 'react-redux/es/connect/connect';
 import Loader from 'react-loader-spinner';
 import _ from 'lodash';
+import {getAccountByToken} from "../../actions/actionCreator";
 
 const PrivateRouterSignInUp = ({component: Component, ...rest}) => {
+
+    useEffect(() => {
+        if (!rest.account) {
+            rest.getAccountByToken();
+        }
+    }, []);
+
     return (
         <Route
             {...rest}
@@ -34,4 +42,8 @@ const mapStateToProps = (state) => {
     return {account, isFetching, error};
 };
 
-export default connect(mapStateToProps)(PrivateRouterSignInUp);
+const mapDispatchToProps = (dispatch) => ({
+    getAccountByToken: () => dispatch(getAccountByToken())
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(PrivateRouterSignInUp);
