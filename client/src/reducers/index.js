@@ -1,8 +1,9 @@
 import { combineReducers } from 'redux';
 import accountReducer from './accountReducer';
+import creationAccountReducer from './creationAccountReducer';
 
 const appReducer = combineReducers({
-    accountReducer
+    accountReducer, creationAccountReducer
 });
 
 const rootReducer = (state, action) => appReducer(state, action);

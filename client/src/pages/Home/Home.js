@@ -1,15 +1,12 @@
 import React, {Component} from 'react';
-import styles from './Home-module.sass';
+import styles from './Home.module.sass';
 import connect from 'react-redux/es/connect/connect';
 
 class Home extends Component {
-    constructor(props) {
-        super(props);
-    }
-
     render() {
         return (
             <div className={styles.home}>
+                { JSON.stringify(this.props.account) }
             </div>
         );
     }

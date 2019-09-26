@@ -21,7 +21,7 @@ const PrivateRouterSignInUp = ({component: Component, ...rest}) => {
                                 state: {from: props.location}
                             }}
                         />;
-                    } else if (rest.account) {
+                    } else  {
                         return <Component {...props} />;
                     }
                 }

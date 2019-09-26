@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import styles from './SignIn-module.sass';
+import styles from './SignIn.module.sass';
 
 class SignIn extends Component {
     render() {
