@@ -5,7 +5,6 @@ import Loader from 'react-loader-spinner';
 import _ from 'lodash';
 
 const PrivateRouterHome = ({component: Component, ...rest}) => {
-
     return (
         <Route
             {...rest}

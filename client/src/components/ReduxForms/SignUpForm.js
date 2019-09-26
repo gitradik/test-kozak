@@ -22,17 +22,17 @@ class SignUpForm extends React.Component {
 }
 
 SignUpForm.propTypes = {
-    onChange: PropTypes.func
+    onChange: PropTypes.func,
 };
 
 SignUpForm = reduxForm({
     form: 'SignUpForm',
-    validate
+    validate,
 })(SignUpForm);
 
 export default connect(
     state => ({
-        initialValues: state.creationAccountReducer.user
+        initialValues: state.creationAccountReducer.user,
     }),
 )(SignUpForm);
 

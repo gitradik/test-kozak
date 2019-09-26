@@ -2,10 +2,11 @@ import ACTION from '../actions/actiontsTypes';
 
 const initialState = {
     user: {
-        login: null,
-        email: null,
-        password: null,
-    }
+        login: "",
+        email: "",
+        password: "",
+    },
+    isValid: false,
 };
 
 export default function (state = initialState, action) {
@@ -13,7 +14,8 @@ export default function (state = initialState, action) {
         case ACTION.CREATION_ACCOUNT_RESPONSE: {
             return {
                 ...state,
-                user: action.user
+                user: action.user,
+                isValid: action.user.isValid,
             }
         }
 
