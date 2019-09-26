@@ -3,6 +3,7 @@ const {
     hashPassword,
     setToken,
     login,
+    tokenViability,
 } = require('./account/middleware');
 
 const {
@@ -15,6 +16,7 @@ const middleware = {
     hashPassword,
     setToken,
     login,
+    tokenViability,
 
     // WORKER
     validationWorkerData,

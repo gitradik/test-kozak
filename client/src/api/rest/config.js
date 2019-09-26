@@ -9,5 +9,5 @@ function setAccessToken(token) {
 }
 
 export {
-    setAccessToken
+    config, setAccessToken
 };

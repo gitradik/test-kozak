@@ -18,8 +18,10 @@ class SignUp extends Component {
     };
 
     render() {
+        const { error } = this.props;
         return (
             <div className={styles.signUp}>
+                <span className={styles.signUpErrorMessage}>{ error && error.message }</span>
                 <SignUpForm onChange={this.onChangeForm} />
                 <FormButton
                     content="Submit"
@@ -32,9 +34,9 @@ class SignUp extends Component {
 }
 
 const mapStateToProps = (state) => {
+    const { error } = state.accountReducer;
     const {user, isValid} = state.creationAccountReducer;
-    console.log(user);
-    return {user, isValid};
+    return {user, isValid, error};
 };
 
 const mapDispatchToProps = (dispatch) => ({
