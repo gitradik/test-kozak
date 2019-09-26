@@ -1,12 +1,23 @@
-const { validationUserData } = require('./account/middleware');
-const { validationWorkerData } = require('./worker/middleware');
+const {
+    validationUserData,
+    hashPassword,
+    setToken,
+    login,
+} = require('./account/middleware');
+
+const {
+    validationWorkerData,
+} = require('./worker/middleware');
 
 const middleware = {
     // ACCOUNT
     validationUserData,
+    hashPassword,
+    setToken,
+    login,
 
     // WORKER
-    validationWorkerData
+    validationWorkerData,
 };
 
 module.exports = middleware;

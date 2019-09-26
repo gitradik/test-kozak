@@ -1,5 +1,3 @@
-/*
-const typeSecretToken = {
-    squadhelp: "squadhelp"
+module.exports = {
+    SECRET_TOKEN: "kozak"
 };
-module.exports = typeSecretToken;*/

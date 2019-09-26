@@ -1,11 +1,13 @@
 const {
     createAccount,
     getAccountByLogin,
+    hashPassword,
 } = require('./accountController');
 
 const controllers = {
     createAccount,
-    getAccountByLogin
+    getAccountByLogin,
+    hashPassword,
 };
 
 module.exports = controllers;

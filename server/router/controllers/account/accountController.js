@@ -8,7 +8,7 @@ module.exports.createAccount = (req, res, next) => {
 };
 
 module.exports.getAccountByLogin = (req, res, next) => {
-    User.findOne({login: req.headers.login}, ['_id', 'login', 'email'])
+    User.findOne({login: req.body.login}, ['_id', 'login', 'email', 'token'])
         .then(user => {
             if(user) {
                 res.send(user);

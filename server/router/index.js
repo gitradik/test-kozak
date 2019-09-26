@@ -6,7 +6,9 @@ const workControllers = require('./controllers/worker');
 const middleware = require('../utils/middleware');
 
 // ACCOUNT
-router.post("/signUp", middleware.validationUserData, accControllers.createAccount);
+router.post("/signUp", middleware.validationUserData, middleware.hashPassword, middleware.setToken, accControllers.createAccount);
+router.post("/signIn", middleware.login, middleware.setToken, accControllers.getAccountByLogin);
+
 router.get("/account", accControllers.getAccountByLogin);
 
 // WORKER
