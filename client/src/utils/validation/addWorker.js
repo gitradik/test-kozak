@@ -1,5 +1,6 @@
 import React from 'react';
 import '@fortawesome/fontawesome-free/css/all.min.css';
+import styles from '../../components/ReduxForms/ReduxForm.module.sass';
 
 export const validate = values => {
     const errors = {};
@@ -22,8 +23,8 @@ export const validate = values => {
 };
 
 export const renderTextField = ({ input, label, placeholder, type, meta: {touched, error } }) => (
-    <div>
-        <label htmlFor="name">{label}</label>
+    <div className={styles.reduxField}>
+        {label && <label htmlFor="name">{label}</label>}
         <input {...input} placeholder={placeholder} type={type} />
         {touched && (error && <div><i className="fas fa-exclamation-circle"/><span>{error}</span></div>)}
     </div>

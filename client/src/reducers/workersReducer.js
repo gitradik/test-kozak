@@ -4,6 +4,7 @@ const initialState = {
     workers: null,
     isFetching: false,
     error: null,
+    maxCount: 0,
 };
 
 export default function (state = initialState, action) {
@@ -21,6 +22,7 @@ export default function (state = initialState, action) {
             return {
                 ...state,
                 workers: action.workers,
+                maxCount: action.maxCount,
                 isFetching: false,
                 error: null,
             }

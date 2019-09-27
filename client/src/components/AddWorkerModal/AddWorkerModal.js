@@ -1,5 +1,6 @@
 import React from "react";
 import styles from './AddWorkerModal.module.sass';
+import './AddWorkerModal.module.sass';
 import Modal from "react-bootstrap/Modal";
 
 export default function AddWorkerModal(props) {
@@ -9,11 +10,11 @@ export default function AddWorkerModal(props) {
             size="md"
             aria-labelledby="addWorkerModalTitleId"
             centered
-            className={styles.addWorkerModal}
+            className={styles.addWorkerModal + " add-worker-modal"}
         >
             <Modal.Header className={styles.modalHeader} closeButton>
                 <Modal.Title className={styles.modalTitle} id="addWorkerModalTitleId">
-                    Modal heading
+                    <i className="fas fa-user-plus"/>Add new worker
                 </Modal.Title>
             </Modal.Header>
             <Modal.Body className={styles.modalBody}>

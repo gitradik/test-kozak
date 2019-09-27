@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import history from "../../utils/history";
 
 class ListWorkers extends Component {
-
     renderWorkers() {
         const { workers } = this.props;
         const arrWorkers = [];
@@ -28,9 +27,13 @@ class ListWorkers extends Component {
         return (
             <div className={styles.listWorkers}>
                 <div className={styles.title}>{ this.props.title }</div>
+                { this.props.component }
                 <ul>{ this.renderWorkers() }</ul>
             </div>
         );
+    }
+
+    componentDidMount() {
     }
 }
 

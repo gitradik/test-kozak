@@ -8,21 +8,21 @@ import { validate, renderTextField } from '../../utils/validation/addWorker';
 
 class AddWorkerForm extends React.Component {
     render() {
-        return <form onChange={this.props.onChange}>
+        return <form className={styles.ReduxForm} onChange={this.props.onChange}>
             <div className={styles.field}>
-                <Field name="fullName" component={renderTextField} type="text" label="Full name" placeholder="Full name"/>
+                <Field name="fullName" component={renderTextField} type="text" label="" placeholder="Full name"/>
             </div>
             <div className={styles.field}>
-                <Field name="phone" component={renderTextField} type="text" label="Phone" placeholder="Phone"/>
+                <Field name="phone" component={renderTextField} type="text" label="" placeholder="Phone"/>
             </div>
             <div className={styles.field}>
-                <Field name="sex" component={renderTextField} type="text" label="Sex" placeholder="Sex"/>
+                <Field name="sex" component={renderTextField} type="text" label="" placeholder="Sex"/>
             </div>
             <div className={styles.field}>
-                <Field name="salary" component={renderTextField} type="text" label="Salary" placeholder="Salary"/>
+                <Field name="salary" component={renderTextField} type="text" label="" placeholder="Salary"/>
             </div>
             <div className={styles.field}>
-                <Field name="position" component={renderTextField} type="text" label="Position" placeholder="Position"/>
+                <Field name="position" component={renderTextField} type="text" label="" placeholder="Position"/>
             </div>
         </form>
     }

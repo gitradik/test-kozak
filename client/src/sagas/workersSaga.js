@@ -7,7 +7,7 @@ export function * getAllWorkers() {
     yield put({ type: ACTION.WORKERS_REQUEST });
     try {
         const { data } = yield getWorkers();
-        yield put({ type: ACTION.WORKERS_RESPONSE, workers: data });
+        yield put({ type: ACTION.WORKERS_RESPONSE, workers: data.workers, maxCount: data.maxCount });
     } catch (err) {
         yield put({ type: ACTION.WORKERS_ERROR, error: _.isUndefined(err.response) || err.response.data });
     }

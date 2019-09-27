@@ -9,9 +9,12 @@ import SignIn from "./pages/SignIn/SignIn";
 import redirectToHome from "./utils/pageNotFound";
 import PrivateRouterHome from "./utils/privateRouters/PrivateRouterHome";
 import PrivateRouterSingInUp from "./utils/privateRouters/PrivateRouterSingInUp";
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 
 function App() {
+    AOS.init();
     return (
         <div className="App">
             <Router history={history}>

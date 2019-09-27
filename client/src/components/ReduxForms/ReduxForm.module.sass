@@ -1,3 +1,35 @@
 .ReduxForm
+  display: flex
+  flex-direction: column
+  align-items: center
+  width: 100%
 
   .field
+    width: 100%
+    margin-bottom: 15px
+
+    &:last-child
+      margin-bottom: 0
+
+    .reduxField
+      display: flex
+      flex-direction: column
+      align-items: flex-start
+
+      input
+        padding: 15px 5px
+        background-color: transparent
+        border: 0
+        width: 100%
+        transition: .3s
+        border-bottom: 2px solid black
+
+        &::placeholder
+          color: black
+          opacity: .5
+          font-weight: 300
+          font-size: 16px
+
+        &:focus
+          transition: .3s
+          border-bottom-color: #d82541

@@ -7,9 +7,12 @@ module.exports.createWorker = (req, res, next) => {
         .catch(() => next({ path: "worker_data" }));
 };
 
-module.exports.getWorkers = (req, res, next) => {
-    Worker.find({})
-        .then(users => res.send(users))
+module.exports.getWorkers = async (req, res, next) => {
+    const maxCount = await Worker.count();
+    Worker.find({}, [], { skip: +req.headers.skip, limit: +req.headers.limit })
+        .then(workers => {
+            res.send({ workers, maxCount });
+        })
         .catch(() => next({ path: "worker_not_found" }));
 };
 
