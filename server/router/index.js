@@ -7,8 +7,7 @@ const middleware = require('../utils/middleware');
 
 // ACCOUNT
 router.post("/signUp", middleware.validationUserData, middleware.hashPassword, middleware.setToken, accControllers.createAccount);
-router.get("/signIn", middleware.login, middleware.setToken, accControllers.getAccountByLogin);
-router.get("/account", accControllers.getAccountByLogin);
+router.post("/signIn", middleware.login, middleware.setToken, accControllers.getAccountByLogin);
 router.post('/token', middleware.tokenViability, accControllers.getAccountByLogin);
 
 // WORKER

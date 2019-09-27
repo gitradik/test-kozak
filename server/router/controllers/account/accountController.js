@@ -14,6 +14,7 @@ module.exports.getAccountByLogin = (req, res, next) => {
     User.findOne({login: req.body.login}, ['_id', 'login', 'email', 'token'])
         .then(user => {
             if(user) {
+                user.token = req.body.token;
                 res.send(user);
             } else {
                 next({path: "account_not_found"});

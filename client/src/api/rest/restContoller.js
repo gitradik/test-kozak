@@ -3,9 +3,10 @@ import { baseUrl } from '../baseURL';
 import { config } from './config';
 
 export const signUp = (data) => axios.post(baseUrl + "signUp", data);
+export const signIn = (data) => axios.post(baseUrl + "signIn", data);
 export const accountByToken = () => axios.post(baseUrl + "token", null, config);
 
-/*export const login = (data) => axios.post(baseUrl + "login", data);
+/*
 export const accByToken = () => axios.post(baseUrl + "token", null, config);
 export const postContest = (data) => axios.post(baseUrl + "contest", data, config);
 export const getContests = () => axios.get(baseUrl + "contests", config);

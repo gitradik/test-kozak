@@ -3,7 +3,7 @@ import ACTION from '../actions/actiontsTypes';
 const initialState = {
     account: null,
     isFetching: false,
-    error: null
+    error: null,
 };
 
 export default function (state = initialState, action) {
@@ -13,7 +13,7 @@ export default function (state = initialState, action) {
             return {
                 ...state,
                 isFetching: true,
-                error: null
+                error: null,
             }
         }
 
@@ -22,7 +22,7 @@ export default function (state = initialState, action) {
                 ...state,
                 account: action.account,
                 isFetching: false,
-                error: null
+                error: null,
             }
         }
 
@@ -30,7 +30,7 @@ export default function (state = initialState, action) {
             return {
                 ...state,
                 isFetching: false,
-                error: action.error
+                error: action.error,
             }
         }
 

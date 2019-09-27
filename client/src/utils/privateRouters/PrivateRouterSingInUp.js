@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
 import { Redirect, Route } from 'react-router-dom';
 import connect from 'react-redux/es/connect/connect';
-import Loader from 'react-loader-spinner';
 import _ from 'lodash';
 import {getAccountByToken} from "../../actions/actionCreator";
+import MyLoader from "../../components/MyLoader/MyLoader";
 
 const PrivateRouterSignInUp = ({component: Component, ...rest}) => {
 
@@ -18,7 +18,7 @@ const PrivateRouterSignInUp = ({component: Component, ...rest}) => {
             {...rest}
             render={props => {
                 if(rest.isFetching) {
-                    return <Loader type="Bars" color="orange" height={40} width={40}/>;
+                    return <MyLoader />;
                 }
                 else {
                     if (!_.isNull(rest.account)) {
@@ -28,9 +28,7 @@ const PrivateRouterSignInUp = ({component: Component, ...rest}) => {
                                 state: {from: props.location}
                             }}
                         />;
-                    } else  {
-                        return <Component {...props} />;
-                    }
+                    } else return <Component {...props} />;
                 }
             }}
         />
@@ -38,8 +36,8 @@ const PrivateRouterSignInUp = ({component: Component, ...rest}) => {
 };
 
 const mapStateToProps = (state) => {
-    const {account, isFetching, error} = state.accountReducer;
-    return {account, isFetching, error};
+    const {account, isFetching, error, } = state.accountReducer;
+    return {account, isFetching, error, };
 };
 
 const mapDispatchToProps = (dispatch) => ({

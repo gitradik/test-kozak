@@ -15,6 +15,11 @@ export const creationAccount = (body) => ({
   body
 });
 
+export const loginUserAccount = (body) => ({
+  type: ACTION.LOGIN_ACCOUNT,
+  body
+});
+
 export const getAccountByToken = () => ({
   type: ACTION.ACCOUNT_BY_TOKEN,
 });

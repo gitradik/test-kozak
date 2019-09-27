@@ -4,10 +4,18 @@ import { validateLogin, validatePassword, validateEmail } from '../utils/validat
 
 export function * creationUserAccount({body}) {
     try {
-      /*  const state = yield select();
-        let { user } = {...state.creationAccountReducer};*/
         const { login, email, password } = body;
         const dataValids = [validateLogin(login), validateEmail(email), validatePassword(password)];
+        body.isValid = dataValids.every(el => el);
+        yield put({ type: ACTION.CREATION_ACCOUNT_RESPONSE, user: body });
+    } catch (err) {
+    }
+}
+
+export function * loginUserAccount({body}) {
+    try {
+        const { login, password } = body;
+        const dataValids = [validateLogin(login), validatePassword(password)];
         body.isValid = dataValids.every(el => el);
         yield put({ type: ACTION.CREATION_ACCOUNT_RESPONSE, user: body });
     } catch (err) {
