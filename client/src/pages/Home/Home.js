@@ -7,6 +7,8 @@ import FormButton from "../../components/FormButton/FormButton";
 import {ButtonToolbar} from "react-bootstrap";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import AddWorkerModal from "../../components/AddWorkerModal/AddWorkerModal";
+import AddWorkerForm from "../../components/ReduxForms/AddWorkerForm";
+import Modal from "react-bootstrap/Modal";
 
 class Home extends Component {
     constructor(props) {
@@ -16,11 +18,15 @@ class Home extends Component {
         };
     }
 
+    onChangeForm = ({ fullName, phone, sex, salary, position }) => {
+        console.log(fullName, phone, sex, salary, position)
+    };
+
     render() {
         const { modalShow } = this.state;
         return (
             <div className={styles.home}>
-                <ButtonToolbar>
+                <ButtonToolbar className={styles.btnToolbar}>
                     <FormButton variant="primary" onClick={() => this.setState({ modalShow: true })}
                                 fontawesomeIcon="fas fa-user-plus"
                                 content="Add new worker"
@@ -29,6 +35,7 @@ class Home extends Component {
                     <AddWorkerModal
                         show={modalShow}
                         onHide={() => this.setState({ modalShow: false })}
+                        component={<AddWorkerForm onChange={this.onChangeForm}/>}
                     />
                 </ButtonToolbar>
 
