@@ -5,6 +5,8 @@ import connect from 'react-redux/es/connect/connect';
 import {signUp, creationAccount} from '../../actions/actionCreator'
 import SignUpForm from "../../components/ReduxForms/SignUpForm";
 import FormButton from "../../components/FormButton/FormButton";
+import EntryButton from "../../components/EntryButton/EntryButton";
+import PAGE_LINKS from "../../utils/pageLinks";
 
 class SignUp extends Component {
 
@@ -28,6 +30,7 @@ class SignUp extends Component {
                     onClick={this.onSubmitForm}
                     isDisabled={!this.props.isValid}
                 />
+                <EntryButton content="SignIn" link={PAGE_LINKS.SIGN_IN} />
             </div>
         );
     }

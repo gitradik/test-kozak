@@ -1,11 +1,13 @@
 import { combineReducers } from 'redux';
 import accountReducer from './accountReducer';
 import creationAccountReducer from './creationAccountReducer';
+import workersReducer from './workersReducer';
 import { reducer as formReducer } from 'redux-form'
 
 const appReducer = combineReducers({
     accountReducer,
     creationAccountReducer,
+    workersReducer,
     form: formReducer,
 });
 
