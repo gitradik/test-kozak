@@ -20,10 +20,10 @@ class SignUp extends Component {
     };
 
     render() {
-        const { error } = this.props;
+        const { error, isValid } = this.props;
         return (
             <div className={styles.signUp}>
-                <span className={styles.signUpErrorMessage}>{ error && error.message }</span>
+                <span className={styles.signUpErrorMessage}>{ (error && isValid) && error.message }</span>
                 <SignUpForm onChange={this.onChangeForm} />
                 <FormButton
                     content="Submit"

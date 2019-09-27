@@ -3,10 +3,17 @@ import styles from './FormButton.module.sass';
 import PropTypes from 'prop-types';
 
 class FormButton extends Component {
+
+    renderFontawesomeIcon = () => {
+        const { fontawesomeIcon } = this.props;
+        return fontawesomeIcon.length > 0 && <i className={fontawesomeIcon}/>;
+    };
+
     render() {
-        const {content, isDisabled} = this.props;
+        const {content, isDisabled, variant} = this.props;
         return (
-            <button onClick={this.props.onClick} className={styles.formButton} disabled={isDisabled}>
+            <button variant={variant} onClick={this.props.onClick} className={styles.formButton} disabled={isDisabled}>
+                {this.renderFontawesomeIcon()}
                 {content}
             </button>
         );
@@ -18,6 +25,13 @@ FormButton.propTypes = {
     link: PropTypes.string,
     isDisabled: PropTypes.bool,
     onClick: PropTypes.func,
+    fontawesomeIcon: PropTypes.string,
+    variant: PropTypes.string,
+};
+
+FormButton.defaultProps = {
+    fontawesomeIcon: "",
+    variant: "primary",
 };
 
 export default FormButton;
