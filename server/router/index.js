@@ -10,9 +10,11 @@ router.post("/signUp", middleware.validationUserData, middleware.hashPassword, m
 router.post("/signIn", middleware.login, middleware.setToken, accControllers.getAccountByLogin);
 router.post('/token', middleware.tokenViability, accControllers.getAccountByLogin);
 
+// WORKERS
+router.get("/workers", middleware.tokenViability, workControllers.getWorkers);
 // WORKER
-router.post("/createWorker", middleware.validationWorkerData, workControllers.createWorker);
-router.get("/worker/:id", workControllers.getWorkerById);
+router.post("/createWorker", middleware.tokenViability, middleware.validationWorkerData, workControllers.createWorker);
+router.get("/worker/:id", middleware.tokenViability, workControllers.getWorkerById);
 
 /*router.get('/account', accControllers.getAllAccounts);
 

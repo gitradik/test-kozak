@@ -8,7 +8,11 @@ export const getAccountByToken = () => ({ type: ACTION.ACCOUNT_BY_TOKEN, });
 // REDUX FORM
 export const creationAccount = (body) => ({ type: ACTION.CREATION_ACCOUNT, body });
 export const loginUserAccount = (body) => ({ type: ACTION.LOGIN_ACCOUNT, body });
+export const creationWorker = (body) => ({ type: ACTION.CREATION_WORKER, body });
 
 // WORKERS
 export const getWorkers = () => ({ type: ACTION.FETCH_WORKERS, });
+
+// WORKER
+export const addWorker = (body) => ({ type: ACTION.FETCH_WORKER, body });
 

@@ -3,6 +3,7 @@ import ACTION from '../actions/actiontsTypes';
 import * as accountSaga from "./accountSaga";
 import * as creationAccountSaga from "./creationAccountSaga";
 import * as workersSaga from "./workersSaga";
+import * as workerSaga from "./workerSaga";
 import * as creationWorkersSaga from "./creationWorkerSaga";
 
 function * rootSaga() {
@@ -16,6 +17,9 @@ function * rootSaga() {
   // WORKERS
   yield takeLatest(ACTION.FETCH_WORKERS, workersSaga.getAllWorkers);
   yield takeLatest(ACTION.CREATION_WORKER, creationWorkersSaga.creationWorkerData);
+
+  // WORKER
+  yield takeLatest(ACTION.FETCH_WORKER, workerSaga.addOneWorker);
 }
 
 export default rootSaga;

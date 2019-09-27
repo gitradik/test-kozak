@@ -8,7 +8,8 @@ import {ButtonToolbar} from "react-bootstrap";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import AddWorkerModal from "../../components/AddWorkerModal/AddWorkerModal";
 import AddWorkerForm from "../../components/ReduxForms/AddWorkerForm";
-import Modal from "react-bootstrap/Modal";
+import { addWorker, creationWorker, getWorkers } from '../../actions/actionCreator';
+import MyLoader from "../../components/MyLoader/MyLoader";
 
 class Home extends Component {
     constructor(props) {
@@ -19,7 +20,12 @@ class Home extends Component {
     }
 
     onChangeForm = ({ fullName, phone, sex, salary, position }) => {
-        console.log(fullName, phone, sex, salary, position)
+        this.props.creationWorker({fullName, phone, sex, salary, position});
+    };
+
+    onSubmitForm = () => {
+        const { worker, addWorker } = this.props;
+        addWorker(worker);
     };
 
     render() {
@@ -35,19 +41,39 @@ class Home extends Component {
                     <AddWorkerModal
                         show={modalShow}
                         onHide={() => this.setState({ modalShow: false })}
-                        component={<AddWorkerForm onChange={this.onChangeForm}/>}
+                        component={
+                            <>
+                                <AddWorkerForm onChange={this.onChangeForm}/>
+                                <FormButton variant="primary" onClick={this.onSubmitForm}
+                                            fontawesomeIcon="fas fa-user-plus"
+                                            content="Add new worker"
+                                            isDisabled={!this.props.isValid}
+                                />
+                            </>
+                        }
                     />
                 </ButtonToolbar>
-
-                <ListWorkers/>
+                <ListWorkers workers={this.props.workers ? this.props.workers : []}/>
             </div>
         );
+    }
+
+    componentDidMount() {
+        this.props.getWorkers();
     }
 }
 
 const mapStateToProps = (state) => {
-    const { workers, isFetching, error } = state.workersReducer;
-    return { workers, isFetching, error };
+    const { worker, isValid } = state.creationWorkerReducer;
+    const { workers, isFetching } = state.workersReducer;
+    console.log(workers);
+    return { worker, isValid, workers, isFetching };
 };
 
-export default connect(mapStateToProps)(Home);
+const mapDispatchToProps = (dispatch) => ({
+    addWorker: (data) => dispatch(addWorker(data)),
+    creationWorker: (data) => dispatch(creationWorker(data)),
+    getWorkers: () => dispatch(getWorkers()),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home);

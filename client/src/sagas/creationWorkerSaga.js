@@ -4,9 +4,9 @@ import ACTION from "../actions/actiontsTypes";
 export function * creationWorkerData({body}) {
     try {
         const { fullName, phone, sex, salary, position } = body;
-        /*const dataValids = [validateLogin(login), validateEmail(email), validatePassword(password)];
-        body.isValid = dataValids.every(el => el);*/
-        yield put({ type: ACTION.CREATION_ACCOUNT_RESPONSE, user: body });
+        const dataValids = [fullName, phone, sex, salary, position];
+        body.isValid = dataValids.every(el => el);
+        yield put({ type: ACTION.CREATION_WORKER_RESPONSE, worker: body });
     } catch (err) {
     }
 }

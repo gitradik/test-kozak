@@ -1,8 +1,8 @@
 .formButton
+  position: relative
   outline: none
   text-decoration: none
   box-shadow: none
-  position: relative
   overflow: hidden
   padding: 15px 30px
   border: 3px solid black
@@ -18,6 +18,10 @@
   i
     margin-right: 7px
     font-size: 14px
+
+  span, i
+    position: relative
+    z-index: 2
 
   &:hover
     transition: .3s
@@ -40,4 +44,9 @@
     background-color: black
     transition: .3s
     width: 0
-    z-index: -1
+    z-index: 1
+
+.disabled
+
+  &:before
+    width: 0!important

@@ -6,7 +6,7 @@ const Schema = new mongoose.Schema({
     sex: { type: String, required: true },
     salary: { type: String, required: true },
     position: { type: String, required: true },
-    createAt: { type: Date,  default: Date.now, required: true },
+    createAt: { type: Date,  default: Date.now },
 });
 
 const Worker = mongoose.model('Worker', Schema);

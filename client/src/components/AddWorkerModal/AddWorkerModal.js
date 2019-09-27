@@ -1,12 +1,8 @@
 import React from "react";
 import styles from './AddWorkerModal.module.sass';
 import Modal from "react-bootstrap/Modal";
-import AddWorkerForm from "../ReduxForms/AddWorkerForm";
 
 export default function AddWorkerModal(props) {
-
-
-
     return (
         <Modal
             {...props}
