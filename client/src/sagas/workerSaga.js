@@ -1,6 +1,5 @@
-import { put } from 'redux-saga/effects'
+import {put, select} from 'redux-saga/effects'
 import ACTION from "../actions/actiontsTypes";
-import { config } from "../api/rest/config";
 import { addWorker, putWorker } from '../api/rest/restContoller';
 import _ from 'lodash';
 
@@ -18,7 +17,12 @@ export function * putOneWorker({ body }) {
     yield put({ type: ACTION.WORKER_REQUEST });
     try {
         const { data } = yield putWorker(body);
-        yield put({ type: ACTION.WORKER_RESPONSE, worker: data });
+        const state = yield select();
+        let { workers } = { ...state.workersReducer };
+        const indexWorker = workers.findIndex(obj => obj._id === data.updatedWorker._id);
+        workers[indexWorker] = data.updatedWorker;
+        yield put({ type: ACTION.WORKERS_RESPONSE, workers, maxCount: data.maxCount });
+        yield put({ type: ACTION.WORKER_RESPONSE, worker: data.updatedWorker });
     } catch (err) {
         yield put({ type: ACTION.WORKER_ERROR, error: _.isUndefined(err.response) || err.response.data });
     }

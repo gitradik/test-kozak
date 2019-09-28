@@ -37,7 +37,7 @@ class Home extends Component {
         putWorker(worker);
         setTimeout(() => {
             putWorkerModalForm(false);
-           // setTimeout(() => this.props.getWorkers(), 0);
+            setTimeout(() => this.setState({}), 0);
         }, 0);
     };
 

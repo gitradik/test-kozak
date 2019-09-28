@@ -8,8 +8,9 @@ module.exports.createWorker = (req, res, next) => {
         .catch(() => next({ path: "worker_data" }));
 };
 
-module.exports.updateWorker = (req, res, next) => {
+module.exports.updateWorker = async (req, res, next) => {
     const workerId = req.headers.workerid;
+    const maxCount = await Worker.count();
     if(mongoose.Types.ObjectId(workerId)) {
         req.body.createAt = new Date();
         Worker.findOneAndUpdate({ _id: workerId }, { $set : req.body },
@@ -17,7 +18,7 @@ module.exports.updateWorker = (req, res, next) => {
             if(err){
                 next({ path: "worker_data" });
             } else {
-                res.send(updatedWorker);
+                res.send({ updatedWorker, maxCount });
             }
         });
     } else {
