@@ -17,4 +17,5 @@ export const getWorkers = () => ({ type: ACTION.FETCH_WORKERS, });
 // WORKER
 export const addWorker = (body) => ({ type: ACTION.FETCH_WORKER, body });
 export const putWorker = (body) => ({ type: ACTION.PUT_FETCH_WORKER, body });
+export const removeWorker = () => ({ type: ACTION.DELETE_FETCH_WORKER });
 

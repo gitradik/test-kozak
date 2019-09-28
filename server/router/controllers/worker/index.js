@@ -3,6 +3,7 @@ const {
     getWorkerById,
     getWorkers,
     updateWorker,
+    removeWorker,
 } = require('./workerController');
 
 const controllers = {
@@ -10,6 +11,7 @@ const controllers = {
     getWorkerById,
     getWorkers,
     updateWorker,
+    removeWorker,
 };
 
 module.exports = controllers;

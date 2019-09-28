@@ -22,6 +22,7 @@ function * rootSaga() {
   // WORKER
   yield takeLatest(ACTION.FETCH_WORKER, workerSaga.addOneWorker);
   yield takeLatest(ACTION.PUT_FETCH_WORKER, workerSaga.putOneWorker);
+  yield takeLatest(ACTION.DELETE_FETCH_WORKER, workerSaga.removeOneWorker);
 }
 
 export default rootSaga;

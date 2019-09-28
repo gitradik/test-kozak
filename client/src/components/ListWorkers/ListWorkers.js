@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import history from "../../utils/history";
 import { setWorkerId } from '../../api/rest/config';
 import WorkerChangeButton from "../WorkerChangeButton/WorkerChangeButton";
-import { creationWorker, putWorkerModalForm} from "../../actions/actionCreator";
+import { creationWorker, putWorkerModalForm, removeWorker } from "../../actions/actionCreator";
 
 class ListWorkers extends Component {
     renderWorkers() {
@@ -22,6 +22,13 @@ class ListWorkers extends Component {
                             this.props.creationWorker({ fullName, phone, sex, salary, position });
                             this.props.putWorkerModalForm(true);
                         } }
+                    />
+                    <WorkerChangeButton
+                        content="Remove"
+                        onClick={ () => {
+                            setWorkerId(_id);
+                            setTimeout(() => this.props.removeWorker(),0);
+                        }}
                     />
                     <div className={styles.liBox}>
                         <span>{fullName}</span>
@@ -69,6 +76,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => ({
     creationWorker: (data) => dispatch(creationWorker(data)),
     putWorkerModalForm: (value) => dispatch(putWorkerModalForm(value)),
+    removeWorker: () => dispatch(removeWorker()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ListWorkers);

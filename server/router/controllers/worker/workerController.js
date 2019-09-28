@@ -22,8 +22,20 @@ module.exports.updateWorker = async (req, res, next) => {
             }
         });
     } else {
-        next({ path: "worker_data" });
+        next({ path: "worker_not_found" });
     } 
+};
+
+module.exports.removeWorker = async (req, res, next) => {
+    const workerId = req.headers.workerid;
+    const maxCount = await Worker.count();
+    if(mongoose.Types.ObjectId(workerId)) {
+        Worker.remove({ _id: workerId })
+            .then(remoteWorker => res.send({ remoteWorker, maxCount, workerId }))
+            .catch(() => next({ path: "worker_not_found" }));
+    } else {
+        next({ path: "worker_not_found" });
+    }
 };
 
 module.exports.getWorkers = async (req, res, next) => {
