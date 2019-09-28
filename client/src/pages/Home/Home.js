@@ -67,7 +67,10 @@ class Home extends Component {
         return (
             <div className={styles.home}>
                 <ButtonToolbar className={styles.btnToolbar}>
-                    <FormButton variant="primary" onClick={() => this.setState({ addModalShow: true })}
+                    <FormButton variant="primary" onClick={() => {
+                        this.props.creationWorker({ fullName: '', phone: '', sex: '', salary: '', position: '' });
+                        setTimeout(() => this.setState({ addModalShow: true }), 0);
+                    }}
                                 fontawesomeIcon="fas fa-user-plus"
                                 content="Add new worker" />
                     <AddWorkerModal
