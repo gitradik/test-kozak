@@ -5,11 +5,11 @@ import PropTypes from 'prop-types';
 import history from "../../utils/history";
 import { setWorkerId } from '../../api/rest/config';
 import WorkerChangeButton from "../WorkerChangeButton/WorkerChangeButton";
-import { creationWorker, putWorkerModalForm, removeWorker } from "../../actions/actionCreator";
+import { creationWorker, putWorkerModalForm } from "../../actions/actionCreator";
 
 class ListWorkers extends Component {
     renderWorkers() {
-        const { workers } = this.props;
+        const { workers, removeWorkerFunc, creationWorker, putWorkerModalForm } = this.props;
         const arrWorkers = [];
         for (let i = 0; i < workers.length; i++) {
             const {_id, fullName, phone, sex, salary, position, createAt} = workers[i];
@@ -19,15 +19,15 @@ class ListWorkers extends Component {
                         content="Change"
                         onClick={ () => {
                             setWorkerId(_id);
-                            this.props.creationWorker({ fullName, phone, sex, salary, position });
-                            this.props.putWorkerModalForm(true);
+                            creationWorker({ fullName, phone, sex, salary, position });
+                            putWorkerModalForm(true);
                         } }
                     />
                     <WorkerChangeButton
                         content="Remove"
                         onClick={ () => {
                             setWorkerId(_id);
-                            setTimeout(() => this.props.removeWorker(),0);
+                            removeWorkerFunc();
                         }}
                     />
                     <div className={styles.liBox}>
@@ -61,6 +61,7 @@ ListWorkers.propTypes = {
     title: PropTypes.string,
     workers: PropTypes.array,
     putWorker: PropTypes.func,
+    removeWorkerFunc: PropTypes.func,
 };
 
 ListWorkers.defaultProps = {
@@ -76,7 +77,6 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => ({
     creationWorker: (data) => dispatch(creationWorker(data)),
     putWorkerModalForm: (value) => dispatch(putWorkerModalForm(value)),
-    removeWorker: () => dispatch(removeWorker()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ListWorkers);
