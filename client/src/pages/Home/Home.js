@@ -35,17 +35,18 @@ class Home extends Component {
     };
 
     onClickNextBtn = () => {
+        const { workers, getWorkers} = this.props;
         const skip = getSkip();
-        if(skip < this.props.maxCount - 1 ) {
-            setSkip(skip + 5);
-            setTimeout(() => this.props.getWorkers(), 0);
+        if (workers.length === getLimit()) {
+            setSkip(skip + getLimit());
+            setTimeout(() => getWorkers(), 0);
         }
     };
 
     onClickPrevBtn = () => {
         const skip = getSkip();
-        if(skip >= 5) {
-            setSkip(skip - 5);
+        if(skip >= getLimit()) {
+            setSkip(skip - getLimit());
             setTimeout(() => this.props.getWorkers(), 0);
         }
     };

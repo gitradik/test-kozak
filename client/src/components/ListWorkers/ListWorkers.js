@@ -11,12 +11,16 @@ class ListWorkers extends Component {
             const {_id, fullName, phone, sex, salary, position, createAt} = workers[i];
             arrWorkers.push(
                 <li key={i} onClick={() => history.push('/worker/' + _id)}>
-                    <span>{fullName}</span>
-                    <span>{phone}</span>
-                    <span>{sex}</span>
-                    <span>{salary}</span>
-                    <span>{position}</span>
-                    <span>{createAt}</span>
+                    <div className={styles.liBox}>
+                        <span>{fullName}</span>
+                        <span>{phone}</span>
+                        <span>{sex}</span>
+                    </div>
+                    <div className={styles.liBox}>
+                        <span>{salary}</span>
+                        <span>{position}</span>
+                        <span>{createAt}</span>
+                    </div>
                 </li>
             );
         }
@@ -31,9 +35,6 @@ class ListWorkers extends Component {
                 <ul>{ this.renderWorkers() }</ul>
             </div>
         );
-    }
-
-    componentDidMount() {
     }
 }
 
