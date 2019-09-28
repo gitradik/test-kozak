@@ -1,3 +1,5 @@
+@import "../../utils/dataStyles"
+
 .listWorkers
   overflow: hidden
   display: flex
@@ -18,12 +20,67 @@
 
     li
       width: 100%
-      padding: 20px
-      box-shadow: 0 0 15px 0 rgba(0,0,0,.05)
+      padding: 30px
       margin-bottom: 20px
+      position: relative
+      overflow: hidden
+      transition: .3s
+      box-shadow: 0 0 15px 0 rgba(0,0,0,.05)
+
+      &:hover
+        transition: .3s
+        box-shadow: 0 0 15px 0 rgba(0,0,0,.15)
+
+        .actionButtons
+          transition: .4s
+          right: 0
 
       &:last-child
         margin-bottom: 0
+
+      .actionButtons
+        position: absolute
+        top: 0
+        bottom: 0
+        display: flex
+        flex-direction: column
+        align-items: flex-start
+        transition: .4s
+        right: -150px
+
+        button
+          width: 100%
+          height: 100%
+          padding-left: 20px
+          padding-right: 20px
+          color: white
+          border: 0
+          font-size: 14px
+          font-weight: 500
+
+          &:first-child
+            border: 2px solid $redColor
+            transition: .2s
+            background-color: $redColor
+
+            &:hover
+              border-bottom-color: rgba(black, .5)
+              transition: .2s
+              background-color: transparent
+              color: $redColor
+
+          &:last-child
+            border: 2px solid black
+            transition: .2s
+            background-color: black
+
+            &:hover
+              border-top-color: rgba($redColor, .5)
+              transition: .2s
+              background-color: transparent
+              color: black
+
+
 
       .liBox
 

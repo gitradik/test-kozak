@@ -15,21 +15,23 @@ class ListWorkers extends Component {
             const {_id, fullName, phone, sex, salary, position, createAt} = workers[i];
             arrWorkers.push(
                 <li key={i} onClick={() => history.push('/worker/' + _id)}>
-                    <WorkerChangeButton
-                        content="Change"
-                        onClick={ () => {
-                            setWorkerId(_id);
-                            creationWorker({ fullName, phone, sex, salary, position });
-                            putWorkerModalForm(true);
-                        } }
-                    />
-                    <WorkerChangeButton
-                        content="Remove"
-                        onClick={ () => {
-                            setWorkerId(_id);
-                            removeWorkerFunc();
-                        }}
-                    />
+                    <div className={styles.actionButtons}>
+                        <WorkerChangeButton
+                            content="Edit"
+                            onClick={ () => {
+                                setWorkerId(_id);
+                                creationWorker({ fullName, phone, sex, salary, position });
+                                putWorkerModalForm(true);
+                            } }
+                        />
+                        <WorkerChangeButton
+                            content="Remove"
+                            onClick={ () => {
+                                setWorkerId(_id);
+                                removeWorkerFunc();
+                            }}
+                        />
+                    </div>
                     <div className={styles.liBox}>
                         <span>{fullName}</span>
                         <span>{phone}</span>

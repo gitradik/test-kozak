@@ -75,6 +75,7 @@ class Home extends Component {
                                 fontawesomeIcon="fas fa-user-plus"
                                 content="Add new worker" />
                     <AddWorkerModal
+                        fontaw="fas fa-user-plus"
                         title="Add new worker"
                         show={addModalShow}
                         onHide={() => this.setState({ addModalShow: false })}
@@ -85,13 +86,14 @@ class Home extends Component {
                                             isDisabled={!this.props.isValid} /></> }
                     />
                     <AddWorkerModal
-                        title="Change worker"
+                        fontaw="fas fa-user-edit"
+                        title="Edit worker"
                         show={this.props.isOpenPut}
                         onHide={() => this.props.putWorkerModalForm(false)}
                         component={<><AddWorkerForm onChange={this.onChangeForm} />
                                 <FormButton variant="primary" onClick={this.onSubmitFormPut}
                                             fontawesomeIcon=""
-                                            content="change worker"
+                                            content="submit"
                                             isDisabled={!this.props.isValid} /></> }
                     />
                 </ButtonToolbar>
@@ -114,7 +116,6 @@ class Home extends Component {
                     title="List of employees"
                     workers={this.props.workers ? this.props.workers : []}
                 />
-
             </div>
         );
     }
