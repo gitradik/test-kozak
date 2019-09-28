@@ -8,7 +8,7 @@ import {ButtonToolbar} from "react-bootstrap";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import AddWorkerModal from "../../components/AddWorkerModal/AddWorkerModal";
 import AddWorkerForm from "../../components/ReduxForms/AddWorkerForm";
-import { addWorker, creationWorker, getWorkers, putWorkerModalForm } from '../../actions/actionCreator';
+import { addWorker, putWorker, creationWorker, getWorkers, putWorkerModalForm } from '../../actions/actionCreator';
 import ButtonPagination from "../../components/ButtonPagination/ButtonPagination";
 import { setSkip, getLimit, getSkip } from "../../api/rest/config";
 import PaginationCounter from "../../components/PaginationCounter/PaginationCounter";
@@ -33,12 +33,12 @@ class Home extends Component {
     };
 
     onSubmitFormPut = () => {
-       /* const { worker, addWorker } = this.props;
-        addWorker(worker);
+        const { worker, putWorker, putWorkerModalForm } = this.props;
+        putWorker(worker);
         setTimeout(() => {
-            this.setState({ addModalShow: false });
-            setTimeout(() => this.props.getWorkers(), 0);
-        }, 0);*/
+            putWorkerModalForm(false);
+           // setTimeout(() => this.props.getWorkers(), 0);
+        }, 0);
     };
 
     onClickNextBtn = () => {
@@ -57,10 +57,6 @@ class Home extends Component {
             setTimeout(() => this.props.getWorkers(), 0);
         }
     };
-
-    /*showPutWorkerModal = (id, fullName, phone, sex, salary, position) => {
-        this.props.creationWorker({fullName, phone, sex, salary, position});
-    };*/
 
     render() {
         const { addModalShow } = this.state;
@@ -130,6 +126,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => ({
     addWorker: (data) => dispatch(addWorker(data)),
+    putWorker: (data) => dispatch(putWorker(data)),
     creationWorker: (data) => dispatch(creationWorker(data)),
     getWorkers: () => dispatch(getWorkers()),
     putWorkerModalForm: (value) => dispatch(putWorkerModalForm(value)),

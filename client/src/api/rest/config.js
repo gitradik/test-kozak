@@ -3,6 +3,7 @@ const config = {
         access_token: null,
         skip: 0,
         limit: 5,
+        workerId: null,
     }
 };
 
@@ -22,10 +23,15 @@ function getLimit() {
     return config.headers.limit;
 }
 
+function setWorkerId(id) {
+    config.headers.workerId = id;
+}
+
 export {
     config,
     setAccessToken,
     setSkip,
     getLimit,
-    getSkip
+    getSkip,
+    setWorkerId,
 };

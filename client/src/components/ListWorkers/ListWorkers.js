@@ -3,8 +3,9 @@ import styles from './ListWorkers.module.sass';
 import connect from 'react-redux/es/connect/connect';
 import PropTypes from 'prop-types';
 import history from "../../utils/history";
+import { setWorkerId } from '../../api/rest/config';
 import WorkerChangeButton from "../WorkerChangeButton/WorkerChangeButton";
-import {addWorker, creationWorker, getWorkers, putWorkerModalForm} from "../../actions/actionCreator";
+import { creationWorker, putWorkerModalForm} from "../../actions/actionCreator";
 
 class ListWorkers extends Component {
     renderWorkers() {
@@ -17,8 +18,9 @@ class ListWorkers extends Component {
                     <WorkerChangeButton
                         content="Change"
                         onClick={ () => {
+                            setWorkerId(_id);
                             this.props.creationWorker({ fullName, phone, sex, salary, position });
-                            this.props.putWorkerModalForm(true)
+                            this.props.putWorkerModalForm(true);
                         } }
                     />
                     <div className={styles.liBox}>

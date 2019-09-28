@@ -7,6 +7,7 @@ export const signIn = (data) => axios.post(baseUrl + "signIn", data);
 export const accountByToken = () => axios.post(baseUrl + "token", null, config);
 export const getWorkers = () => axios.get(baseUrl + "workers", config);
 export const addWorker = (data) => axios.post(baseUrl + "createWorker", data, config);
+export const putWorker = (data) => axios.post(baseUrl + "updateWorker", data, config);
 
 /*
 export const accByToken = () => axios.post(baseUrl + "token", null, config);

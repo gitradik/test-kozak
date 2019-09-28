@@ -14,6 +14,7 @@ router.post('/token', middleware.tokenViability, accControllers.getAccountByLogi
 router.get("/workers", middleware.tokenViability, workControllers.getWorkers);
 // WORKER
 router.post("/createWorker", middleware.tokenViability, middleware.validationWorkerData, workControllers.createWorker);
+router.post("/updateWorker", middleware.tokenViability, middleware.validationWorkerData, workControllers.updateWorker);
 router.get("/worker/:id", middleware.tokenViability, workControllers.getWorkerById);
 
 /*router.get('/account', accControllers.getAllAccounts);
