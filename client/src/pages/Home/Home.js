@@ -36,7 +36,7 @@ class Home extends Component {
     onClickNextBtn = () => {
         const { workers, getWorkers, maxCount } = this.props;
         const skip = getSkip();
-        if (workers.length === getLimit() && (getSkip() / getLimit() + 1) < Math.ceil(this.props.maxCount / getLimit())) {
+        if (workers.length === getLimit() && (Math.ceil(getSkip() / getLimit()) + 1) < Math.ceil(maxCount / getLimit())) {
             setSkip(skip + getLimit());
             setTimeout(() => getWorkers(), 0);
         }
@@ -77,7 +77,7 @@ class Home extends Component {
                             fontawesomeIcon="fas fa-chevron-left"
                         />
                         <PaginationCounter
-                            page={ (getSkip() / getLimit()) + 1 }
+                            page={ Math.ceil(getSkip() / getLimit()) + 1 }
                             maxPage={ Math.ceil(this.props.maxCount / getLimit() ) }
                         />
                         <ButtonPagination
