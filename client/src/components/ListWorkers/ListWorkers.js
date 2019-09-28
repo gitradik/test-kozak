@@ -6,6 +6,7 @@ import history from "../../utils/history";
 import { setWorkerId } from '../../api/rest/config';
 import WorkerChangeButton from "../WorkerChangeButton/WorkerChangeButton";
 import { creationWorker, putWorkerModalForm } from "../../actions/actionCreator";
+import 'aos/dist/aos.css'
 
 class ListWorkers extends Component {
     renderWorkers() {
@@ -14,7 +15,7 @@ class ListWorkers extends Component {
         for (let i = 0; i < workers.length; i++) {
             const {_id, fullName, phone, sex, salary, position, createAt} = workers[i];
             arrWorkers.push(
-                <li key={i} onClick={() => history.push('/worker/' + _id)}>
+                <li data-aos="fade-right" data-aos-offset={0} data-aos-duraction={(i * 100) + 1000} key={i} onClick={() => history.push('/worker/' + _id)}>
                     <div className={styles.actionButtons}>
                         <WorkerChangeButton
                             content="Edit"
@@ -51,11 +52,21 @@ class ListWorkers extends Component {
     render() {
         return (
             <div className={styles.listWorkers}>
-                <div className={styles.title}>{ this.props.title }</div>
-                { this.props.component }
+                <div data-aos="zoom-in" data-aos-offset={0} data-aos-duraction={1200}  className={styles.title}>{ this.props.title }</div>
+                    { this.props.component }
                 <ul>{ this.renderWorkers() }</ul>
             </div>
         );
+    }
+
+    componentDidMount() {
+        const AOS = require('aos');
+        this.aos = AOS;
+        this.aos.init();
+    }
+
+    componentDidUpdate() {
+        this.aos.refresh();
     }
 }
 

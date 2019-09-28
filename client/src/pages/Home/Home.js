@@ -68,7 +68,9 @@ class Home extends Component {
         return (
             <div className={styles.home}>
                 <ButtonToolbar className={styles.btnToolbar}>
-                    <FormButton variant="primary" onClick={() => {
+                    <FormButton
+                        dataAos="zoom-in-down" dataAosOffset={0} dataAosDuraction={1000}
+                        variant="primary" onClick={() => {
                         this.props.creationWorker({ fullName: '', phone: '', sex: '', salary: '', position: '' });
                         setTimeout(() => this.setState({ addModalShow: true }), 0);
                     }}
@@ -99,7 +101,7 @@ class Home extends Component {
                 </ButtonToolbar>
                 <ListWorkers
                     removeWorkerFunc={this.onClickRemoveWorker}
-                    component={<div className={styles.paginationButtons}>
+                    component={<div data-aos="fade-left" data-aos-offset={0} data-aos-duraction={800} className={styles.paginationButtons}>
                         <ButtonPagination
                             onClick={this.onClickPrevBtn}
                             fontawesomeIcon="fas fa-chevron-left"
@@ -120,7 +122,16 @@ class Home extends Component {
         );
     }
 
-    componentDidMount() { this.props.getWorkers(); }
+    componentDidMount() {
+        this.props.getWorkers();
+        const AOS = require('aos');
+        this.aos = AOS;
+        this.aos.init();
+    }
+
+    componentDidUpdate() {
+        this.aos.refresh();
+    }
 }
 
 const mapStateToProps = (state) => {
