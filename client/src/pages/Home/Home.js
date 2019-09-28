@@ -36,16 +36,16 @@ class Home extends Component {
 
     onClickNextBtn = () => {
         const skip = getSkip();
-        if(skip !== getLimit() + 1) {
-            setSkip(skip + 1);
+        if(skip < this.props.maxCount - 1 ) {
+            setSkip(skip + 5);
             setTimeout(() => this.props.getWorkers(), 0);
         }
     };
 
     onClickPrevBtn = () => {
         const skip = getSkip();
-        if(skip > 0) {
-            setSkip(skip - 1);
+        if(skip >= 5) {
+            setSkip(skip - 5);
             setTimeout(() => this.props.getWorkers(), 0);
         }
     };
@@ -75,7 +75,7 @@ class Home extends Component {
                             fontawesomeIcon="fas fa-chevron-left"
                         />
                         <PaginationCounter
-                            page={ getSkip() }
+                            page={ (getSkip() / getLimit()) + 1 }
                             maxPage={ Math.ceil(this.props.maxCount / getLimit() ) }
                         />
                         <ButtonPagination
