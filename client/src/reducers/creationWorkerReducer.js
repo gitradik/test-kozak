@@ -9,6 +9,7 @@ const initialState = {
         position: "",
     },
     isValid: false,
+    isOpenPut: false,
 };
 
 export default function (state = initialState, action) {
@@ -18,6 +19,20 @@ export default function (state = initialState, action) {
                 ...state,
                 worker: action.worker,
                 isValid: action.worker.isValid,
+            }
+        }
+
+        case ACTION.PUT_WORKER_MODAL_FORM_OPEN: {
+            return {
+                ...state,
+                isOpenPut: true,
+            }
+        }
+
+        case ACTION.PUT_WORKER_MODAL_FORM_CLOSE: {
+            return {
+                ...state,
+                isOpenPut: false,
             }
         }
 

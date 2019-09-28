@@ -7,7 +7,8 @@ import { validate, renderTextField } from '../../utils/validation/authorization'
 
 class SignInForm extends React.Component {
     render() {
-        return <form onChange={this.props.onChange}>
+        return <form className={[styles.ReduxForm, styles.ReduxFormSignIn].join(' ')} onChange={this.props.onChange}>
+            <div className={styles.title}>{ this.props.title }</div>
             <div className={styles.field}>
                 <Field name="login" component={renderTextField} type="text" label="Login" placeholder="Login"/>
             </div>

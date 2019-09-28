@@ -24,7 +24,9 @@ class SignUp extends Component {
         return (
             <div className={styles.signUp}>
                 <span className={styles.signUpErrorMessage}>{ (error && isValid) && error.message }</span>
-                <SignInForm onChange={this.onChangeForm} />
+                <SignInForm
+                    title="Authorization"
+                    onChange={this.onChangeForm} />
                 <FormButton
                     content="Submit"
                     onClick={this.onSubmitForm}

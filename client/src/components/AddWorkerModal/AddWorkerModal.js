@@ -14,7 +14,7 @@ export default function AddWorkerModal(props) {
         >
             <Modal.Header className={styles.modalHeader} closeButton>
                 <Modal.Title className={styles.modalTitle} id="addWorkerModalTitleId">
-                    { props.fontawesomeIcon && <i className={ props.fontawesomeIcon }/> }{ props.title }
+                   <i className="fas fa-user-plus"/>{ props.title }
                 </Modal.Title>
             </Modal.Header>
             <Modal.Body className={styles.modalBody}>

@@ -1,7 +1,10 @@
 import React, {Component} from 'react';
 import styles from './ListWorkers.module.sass';
+import connect from 'react-redux/es/connect/connect';
 import PropTypes from 'prop-types';
 import history from "../../utils/history";
+import WorkerChangeButton from "../WorkerChangeButton/WorkerChangeButton";
+import {addWorker, creationWorker, getWorkers, putWorkerModalForm} from "../../actions/actionCreator";
 
 class ListWorkers extends Component {
     renderWorkers() {
@@ -11,6 +14,13 @@ class ListWorkers extends Component {
             const {_id, fullName, phone, sex, salary, position, createAt} = workers[i];
             arrWorkers.push(
                 <li key={i} onClick={() => history.push('/worker/' + _id)}>
+                    <WorkerChangeButton
+                        content="Change"
+                        onClick={ () => {
+                            this.props.creationWorker({ fullName, phone, sex, salary, position });
+                            this.props.putWorkerModalForm(true)
+                        } }
+                    />
                     <div className={styles.liBox}>
                         <span>{fullName}</span>
                         <span>{phone}</span>
@@ -41,6 +51,7 @@ class ListWorkers extends Component {
 ListWorkers.propTypes = {
     title: PropTypes.string,
     workers: PropTypes.array,
+    putWorker: PropTypes.func,
 };
 
 ListWorkers.defaultProps = {
@@ -48,4 +59,14 @@ ListWorkers.defaultProps = {
     workers: [],
 };
 
-export default ListWorkers;
+const mapStateToProps = (state) => {
+    const { worker, isValid, isOpenPut} = state.creationWorkerReducer;
+    return { worker, isValid, isOpenPut };
+};
+
+const mapDispatchToProps = (dispatch) => ({
+    creationWorker: (data) => dispatch(creationWorker(data)),
+    putWorkerModalForm: (value) => dispatch(putWorkerModalForm(value)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(ListWorkers);

@@ -8,11 +8,10 @@ import {ButtonToolbar} from "react-bootstrap";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import AddWorkerModal from "../../components/AddWorkerModal/AddWorkerModal";
 import AddWorkerForm from "../../components/ReduxForms/AddWorkerForm";
-import { addWorker, creationWorker, getWorkers } from '../../actions/actionCreator';
+import { addWorker, creationWorker, getWorkers, putWorkerModalForm } from '../../actions/actionCreator';
 import ButtonPagination from "../../components/ButtonPagination/ButtonPagination";
 import { setSkip, getLimit, getSkip } from "../../api/rest/config";
 import PaginationCounter from "../../components/PaginationCounter/PaginationCounter";
-import Modal from "react-bootstrap/Modal";
 
 class Home extends Component {
     constructor(props) {
@@ -33,6 +32,15 @@ class Home extends Component {
         }, 0);
     };
 
+    onSubmitFormPut = () => {
+       /* const { worker, addWorker } = this.props;
+        addWorker(worker);
+        setTimeout(() => {
+            this.setState({ addModalShow: false });
+            setTimeout(() => this.props.getWorkers(), 0);
+        }, 0);*/
+    };
+
     onClickNextBtn = () => {
         const { workers, getWorkers, maxCount } = this.props;
         const skip = getSkip();
@@ -50,6 +58,10 @@ class Home extends Component {
         }
     };
 
+    /*showPutWorkerModal = (id, fullName, phone, sex, salary, position) => {
+        this.props.creationWorker({fullName, phone, sex, salary, position});
+    };*/
+
     render() {
         const { addModalShow } = this.state;
         return (
@@ -60,13 +72,22 @@ class Home extends Component {
                                 content="Add new worker" />
                     <AddWorkerModal
                         title="Add new worker"
-                        fontawesomeIcon="fas fa-user-plus"
                         show={addModalShow}
                         onHide={() => this.setState({ addModalShow: false })}
                         component={<><AddWorkerForm onChange={this.onChangeForm} />
                                 <FormButton variant="primary" onClick={this.onSubmitForm}
                                             fontawesomeIcon=""
                                             content="add worker"
+                                            isDisabled={!this.props.isValid} /></> }
+                    />
+                    <AddWorkerModal
+                        title="Change worker"
+                        show={this.props.isOpenPut}
+                        onHide={() => this.props.putWorkerModalForm(false)}
+                        component={<><AddWorkerForm onChange={this.onChangeForm} />
+                                <FormButton variant="primary" onClick={this.onSubmitFormPut}
+                                            fontawesomeIcon=""
+                                            content="change worker"
                                             isDisabled={!this.props.isValid} /></> }
                     />
                 </ButtonToolbar>
@@ -99,15 +120,16 @@ class Home extends Component {
 }
 
 const mapStateToProps = (state) => {
-    const { worker, isValid } = state.creationWorkerReducer;
+    const { worker, isValid, isOpenPut} = state.creationWorkerReducer;
     const { workers, isFetching, maxCount } = state.workersReducer;
-    return { worker, isValid, workers, isFetching, maxCount };
+    return { worker, isValid, workers, isFetching, maxCount, isOpenPut };
 };
 
 const mapDispatchToProps = (dispatch) => ({
     addWorker: (data) => dispatch(addWorker(data)),
     creationWorker: (data) => dispatch(creationWorker(data)),
     getWorkers: () => dispatch(getWorkers()),
+    putWorkerModalForm: (value) => dispatch(putWorkerModalForm(value)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);

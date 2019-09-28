@@ -21,7 +21,7 @@ const PrivateRouterHome = ({component: Component, ...rest}) => {
                     return <MyLoader />;
                 }
                 else {
-                    if (_.isNull(rest.account)) {
+                    if (_.isNull(rest.account) && _.isNull(rest.error)) {
                         return <Redirect
                             to={{
                                 pathname: '/sign-up',
