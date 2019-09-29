@@ -39,7 +39,7 @@ class Profile extends React.Component {
                             onHide={() => this.props.questRemoveAccount(false)}
                             component={<div className={ styles.questionButtons }>
                                 <FormButton className="mr-2" variant="primary" onClick={ this.onClickYes } fontawesomeIcon="" content="yes" />
-                                <FormButton variant="primary" onClick={ this.onClickYes } fontawesomeIcon="" content="no" />
+                                <FormButton variant="primary" onClick={ () => this.props.questRemoveAccount(false) } fontawesomeIcon="" content="no" />
                             </div>}
                         />
                     </ButtonToolbar>
