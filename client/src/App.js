@@ -22,7 +22,7 @@ function App() {
                     <PrivateRouterHome exact path="/" component={Home}/>
                     <PrivateRouterSingInUp path="/sign-up" component={SignUp}/>
                     <PrivateRouterSingInUp path="/sign-in" component={SignIn}/>
-                    <Route path='*' exact={true} component={redirectToHome}/>
+                    {/*<Route path='*' exact={true} component={redirectToHome}/>*/}
                 </Switch>
             </Router>
         </div>

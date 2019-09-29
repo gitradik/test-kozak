@@ -47,6 +47,15 @@ module.exports.getWorkers = async (req, res, next) => {
         .catch(() => next({ path: "worker_not_found" }));
 };
 
+module.exports.searchWorkers = async (req, res, next) => {
+    const maxCount = await Worker.count();
+    Worker.find({ fullName: req.query.search }, [], { skip: +req.headers.skip, limit: +req.headers.limit })
+        .then(workers => {
+            res.send({ workers, maxCount });
+        })
+        .catch(() => next({ path: "worker_not_found" }));
+};
+
 module.exports.getWorkerById = (req, res, next) => {
     Worker.findById(req.params.id)
         .then(worker => res.send(worker))

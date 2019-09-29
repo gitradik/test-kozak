@@ -4,6 +4,7 @@ const {
     getWorkers,
     updateWorker,
     removeWorker,
+    searchWorkers,
 } = require('./workerController');
 
 const controllers = {
@@ -12,6 +13,7 @@ const controllers = {
     getWorkers,
     updateWorker,
     removeWorker,
+    searchWorkers,
 };
 
 module.exports = controllers;

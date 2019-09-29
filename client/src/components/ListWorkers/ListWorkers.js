@@ -5,10 +5,13 @@ import PropTypes from 'prop-types';
 import history from "../../utils/history";
 import { setWorkerId } from '../../api/rest/config';
 import WorkerChangeButton from "../WorkerChangeButton/WorkerChangeButton";
-import { creationWorker, putWorkerModalForm } from "../../actions/actionCreator";
-import 'aos/dist/aos.css'
+import { creationWorker, putWorkerModalForm, searchWorkers } from "../../actions/actionCreator";
+import 'aos/dist/aos.css';
+import moment from 'moment';
+import SearchField from "../SearchField/SearchField";
 
 class ListWorkers extends Component {
+
     renderWorkers() {
         const { workers, removeWorkerFunc, creationWorker, putWorkerModalForm } = this.props;
         const arrWorkers = [];
@@ -38,14 +41,14 @@ class ListWorkers extends Component {
                         />
                     </div>
                     <div className={styles.liBox}>
-                        <span><i className="fas fa-signature"/>{fullName}</span>
-                        <span><i className="fas fa-phone-alt"/>{phone}</span>
-                        <span><i className="fas fa-female mr-0"/>/<i className="fas fa-male"/>{sex}</span>
+                        <span><i className="fas fa-signature"/>{ fullName }</span>
+                        <span><i className="fas fa-phone-alt"/>{ phone }</span>
+                        <span><i className="fas fa-female mr-0"/>/<i className="fas fa-male"/>{ sex }</span>
                     </div>
                     <div className={styles.liBox}>
-                        <span><i className="fas fa-donate"/>{salary}</span>
-                        <span><i className="fas fa-briefcase"/>{position}</span>
-                        <span><i className="far fa-calendar-alt"/>{createAt}</span>
+                        <span><i className="fas fa-donate"/>{ salary }</span>
+                        <span><i className="fas fa-briefcase"/>{ position }</span>
+                        <span><i className="far fa-calendar-alt"/>{ moment(createAt).format('D-MM-YYYY hh:mm:ss') }</span>
                     </div>
                 </li>
             );
@@ -53,10 +56,18 @@ class ListWorkers extends Component {
         return arrWorkers;
     };
 
+    onChangeSearchField = e => {
+        this.props.searchWorkers(e.target.value);
+        //history.push('/?search=' + e.target.value );
+    };
+
     render() {
         return (
             <div className={styles.listWorkers}>
                 <div className={styles.title}>{ this.props.title }</div>
+                    <SearchField
+                        onChange={this.onChangeSearchField}
+                    />
                     { this.props.component }
                 <ul>{ this.renderWorkers() }</ul>
             </div>
@@ -94,6 +105,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => ({
     creationWorker: (data) => dispatch(creationWorker(data)),
     putWorkerModalForm: (value) => dispatch(putWorkerModalForm(value)),
+    searchWorkers: (data) => dispatch(searchWorkers(data)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ListWorkers);

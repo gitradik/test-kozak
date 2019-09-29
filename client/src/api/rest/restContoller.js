@@ -6,6 +6,7 @@ export const signUp = (data) => axios.post(baseUrl + "signUp", data);
 export const signIn = (data) => axios.post(baseUrl + "signIn", data);
 export const accountByToken = () => axios.post(baseUrl + "token", null, config);
 export const getWorkers = () => axios.get(baseUrl + "workers", config);
+export const searchWorkers = (data) => axios.get(baseUrl + "searchWorkers?search=" + data, config);
 export const addWorker = (data) => axios.post(baseUrl + "createWorker", data, config);
 export const putWorker = (data) => axios.put(baseUrl + "updateWorker", data, config);
 export const removeWorker = () => axios.delete(baseUrl + "deleteWorker", config);

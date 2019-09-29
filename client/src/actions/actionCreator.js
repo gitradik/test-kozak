@@ -13,6 +13,7 @@ export const putWorkerModalForm = (value) => ({ type: ACTION.PUT_WORKER_MODAL_FO
 
 // WORKERS
 export const getWorkers = () => ({ type: ACTION.FETCH_WORKERS, });
+export const searchWorkers = (body) => ({ type: ACTION.SEARCH_FETCH_WORKERS, body });
 
 // WORKER
 export const addWorker = (body) => ({ type: ACTION.FETCH_WORKER, body });

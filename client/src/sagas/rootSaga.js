@@ -16,6 +16,7 @@ function * rootSaga() {
 
   // WORKERS
   yield takeLatest(ACTION.FETCH_WORKERS, workersSaga.getAllWorkers);
+  yield takeLatest(ACTION.SEARCH_FETCH_WORKERS, workersSaga.searchSomeWorkers);
   yield takeLatest(ACTION.CREATION_WORKER, creationWorkersSaga.creationWorkerData);
   yield takeLatest(ACTION.PUT_WORKER_MODAL_FORM, creationWorkersSaga.openPutWorkerForm);
 
