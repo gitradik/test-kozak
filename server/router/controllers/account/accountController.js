@@ -11,7 +11,7 @@ module.exports.createAccount = (req, res, next) => {
 };
 
 module.exports.getAccountByLogin = (req, res, next) => {
-    User.findOne({login: req.body.login}, ['_id', 'login', 'email', 'token'])
+    User.findOne({ login: req.body.login }, ['_id', 'login', 'email', 'token'])
         .then(user => {
             if(user) {
                 user.token = req.body.token;
@@ -21,4 +21,10 @@ module.exports.getAccountByLogin = (req, res, next) => {
             }
         })
         .catch(() => next({path: "account_not_found"}));
+};
+
+module.exports.removeAccount = (req, res, next) => {
+    User.remove({ login: req.body.login })
+        .then(remoteAccount => res.send({ remoteAccount }))
+        .catch(() => next({ path: "account_not_found" }));
 };

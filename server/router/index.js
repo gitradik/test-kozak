@@ -8,7 +8,8 @@ const middleware = require('../utils/middleware');
 // ACCOUNT
 router.post("/signUp", middleware.validationUserData, middleware.hashPassword, middleware.setToken, accControllers.createAccount);
 router.post("/signIn", middleware.login, middleware.setToken, accControllers.getAccountByLogin);
-router.post('/token', middleware.tokenViability, accControllers.getAccountByLogin);
+router.post("/token", middleware.tokenViability, accControllers.getAccountByLogin);
+router.delete("/removeAccount", middleware.tokenViability, accControllers.removeAccount);
 
 // WORKERS
 router.get("/workers", middleware.tokenViability, workControllers.getWorkers);
