@@ -17,16 +17,13 @@ module.exports.updateAccount = (req, res, next) => {
         User.findOneAndUpdate({ login: req.headers.login }, { $set: req.body },
             { new: true, upsert: false, remove: {}, fields: {} }, (err, updatedAccount) => {
             if(err) {
-                console.log("1: ", err);
                 next({path: "account_data"});
             } else {
                 updatedAccount.password = "";
-                console.log(updatedAccount);
                 res.send(updatedAccount);
             }
-            });
+        });
     } catch (err) {
-        console.log("2: ", err);
         next({path: "account_data"});
     }
 };
