@@ -20,7 +20,7 @@ module.exports.updateAccount = (req, res, next) => {
                 next({path: "account_data"});
             } else {
                 updatedAccount.password = "";
-                res.send(updatedAccount);
+                res.send({ updatedAccount, token: req.headers.access_token });
             }
         });
     } catch (err) {

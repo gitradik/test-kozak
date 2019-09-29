@@ -32,7 +32,9 @@ export function * updateMyAccount({ body }) {
     yield put({ type: ACTION.ACCOUNT_REQUEST });
     try {
         const { data } = yield updateAccount(body);
-        yield put({ type: ACTION.ACCOUNT_RESPONSE, account: data });
+        setAccessToken(data.token);
+        yield localStorage.setItem("access", data.token);
+        yield put({ type: ACTION.ACCOUNT_RESPONSE, account: data.updatedAccount });
     } catch (err) {
         yield put({ type: ACTION.ACCOUNT_ERROR, error: _.isUndefined(err.response) || err.response.data });
     }
