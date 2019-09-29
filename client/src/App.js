@@ -21,7 +21,7 @@ function App() {
             <Router history={history}>
                 <Switch>
                     <PrivateRouterHome exact path="/" component={Home}/>
-                    <Route path="/profile" component={Profile}/>
+                    <PrivateRouterHome path="/profile" component={Profile}/>
                     <PrivateRouterSignInUp path="/sign-up" component={SignUp}/>
                     <PrivateRouterSignInUp path="/sign-in" component={SignIn}/>
                     <Route path='*' exact={true} component={redirectToHome}/>

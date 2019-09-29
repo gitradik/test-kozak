@@ -12,6 +12,8 @@ import { addWorker, putWorker, creationWorker, getWorkers, putWorkerModalForm, r
 import ButtonPagination from "../../components/ButtonPagination/ButtonPagination";
 import { setSkip, getLimit, getSkip } from "../../api/rest/config";
 import PaginationCounter from "../../components/PaginationCounter/PaginationCounter";
+import LinkButton from "../../components/LinkButton/LinkButton";
+import PAGE_LINKS from '../../utils/pageLinks';
 
 class Home extends Component {
     constructor(props) {
@@ -67,6 +69,7 @@ class Home extends Component {
         const { addModalShow } = this.state;
         return (
             <div className={styles.home}>
+                <LinkButton className={styles.profileLink} link={PAGE_LINKS.PROFILE} content="Profile" />
                 <ButtonToolbar className={styles.btnToolbar}>
                     <FormButton
 

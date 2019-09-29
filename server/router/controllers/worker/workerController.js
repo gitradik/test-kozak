@@ -49,7 +49,7 @@ module.exports.getWorkers = async (req, res, next) => {
 
 module.exports.searchWorkers = async (req, res, next) => {
     const maxCount = await Worker.count();
-    Worker.find({ fullName: req.query.search }, [], { })
+    Worker.find({ fullName: new RegExp(req.query.search, "i") }, [], { })
         .then(workers => {
             res.send({ workers, maxCount });
         })
