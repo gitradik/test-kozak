@@ -69,7 +69,7 @@ class Home extends Component {
             <div className={styles.home}>
                 <ButtonToolbar className={styles.btnToolbar}>
                     <FormButton
-                        dataAos="zoom-in-down" dataAosOffset={0} dataAosDuraction={1000}
+
                         variant="primary" onClick={() => {
                         this.props.creationWorker({ fullName: '', phone: '', sex: '', salary: '', position: '' });
                         setTimeout(() => this.setState({ addModalShow: true }), 0);

@@ -15,7 +15,11 @@ class ListWorkers extends Component {
         for (let i = 0; i < workers.length; i++) {
             const {_id, fullName, phone, sex, salary, position, createAt} = workers[i];
             arrWorkers.push(
-                <li data-aos="fade-right" data-aos-offset={0} data-aos-duraction={(i * 100) + 1000} key={i} onClick={() => history.push('/worker/' + _id)}>
+                <li data-aos={i % 2 === 0 ? 'fade-right' : 'fade-left'}
+                    data-aos-offset={0}
+                    data-aos-duraction={(i * 100) + 1000}
+                    key={i}
+                    onClick={() => history.push('/worker/' + _id)}>
                     <div className={styles.actionButtons}>
                         <WorkerChangeButton
                             content="Edit"
@@ -34,14 +38,14 @@ class ListWorkers extends Component {
                         />
                     </div>
                     <div className={styles.liBox}>
-                        <span>{fullName}</span>
-                        <span>{phone}</span>
-                        <span>{sex}</span>
+                        <span><i className="fas fa-signature"/>{fullName}</span>
+                        <span><i className="fas fa-phone-alt"/>{phone}</span>
+                        <span><i className="fas fa-female mr-0"/>/<i className="fas fa-male"/>{sex}</span>
                     </div>
                     <div className={styles.liBox}>
-                        <span>{salary}</span>
-                        <span>{position}</span>
-                        <span>{createAt}</span>
+                        <span><i className="fas fa-donate"/>{salary}</span>
+                        <span><i className="fas fa-briefcase"/>{position}</span>
+                        <span><i className="far fa-calendar-alt"/>{createAt}</span>
                     </div>
                 </li>
             );
@@ -52,7 +56,7 @@ class ListWorkers extends Component {
     render() {
         return (
             <div className={styles.listWorkers}>
-                <div data-aos="zoom-in" data-aos-offset={0} data-aos-duraction={1200}  className={styles.title}>{ this.props.title }</div>
+                <div className={styles.title}>{ this.props.title }</div>
                     { this.props.component }
                 <ul>{ this.renderWorkers() }</ul>
             </div>
