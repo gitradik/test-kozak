@@ -28,7 +28,13 @@ const PrivateRouterHome = ({component: Component, ...rest}) => {
                                 state: {from: props.location}
                             }}
                         />;
-                    } else if(!_.isNull(rest.account) && _.isNull(rest.error)) return <Component {...props} />;
+                    } else if (!_.isNull(rest.account) && _.isNull(rest.error)) {
+                        return <Component {...props} />;
+                    } else if (!_.isNull(rest.error)) {
+                        if(rest.error.name === "ConflictAccountData") {
+                            return <Component {...props} />;
+                        }
+                    }
                     else return <></>
                 }
             }}

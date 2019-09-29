@@ -7,7 +7,7 @@ import { validate, renderTextField } from '../../utils/validation/authorization'
 
 class SignUpForm extends React.Component {
     render() {
-        return <form className={[styles.ReduxForm, styles.ReduxFormSignUp].join(' ')} onChange={this.props.onChange}>
+        return <form className={[styles.ReduxForm, styles.ReduxFormSignUp].join(' ')} onChange={ this.props.onChange }>
             <div className={styles.title}>{ this.props.title }</div>
             <div className={styles.field}>
                 <Field name="login" component={renderTextField} type="text" label="Login" placeholder="Login"/>
