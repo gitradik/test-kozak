@@ -33,12 +33,12 @@ class Profile extends React.Component {
                             fontawesomeIcon="fas fa-user-minus"
                             content="Remove my account" />
                         <BootstrapModal
-                            fontaw="fas fa-user-edit"
+                            fontaw="fas fa-user-minus"
                             title="Remove your account?"
                             show={ this.props.isOpenQuestModal }
                             onHide={() => this.props.questRemoveAccount(false)}
                             component={<div className={ styles.questionButtons }>
-                                <FormButton variant="primary" onClick={ this.onClickYes } fontawesomeIcon="" content="yes" />
+                                <FormButton className="mr-2" variant="primary" onClick={ this.onClickYes } fontawesomeIcon="" content="yes" />
                                 <FormButton variant="primary" onClick={ this.onClickYes } fontawesomeIcon="" content="no" />
                             </div>}
                         />
