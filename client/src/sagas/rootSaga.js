@@ -14,6 +14,7 @@ function * rootSaga() {
   yield takeLatest(ACTION.CREATION_ACCOUNT, creationAccountSaga.creationUserAccount);
   yield takeLatest(ACTION.ACCOUNT_BY_TOKEN, accountSaga.accountByTokenSaga);
   yield takeLatest(ACTION.LOGIN_ACCOUNT, creationAccountSaga.loginUserAccount);
+  yield takeLatest(ACTION.QUEST_REMOVE_ACCOUNT_MODAL_FORM, creationAccountSaga.quesRemoveMyAccount);
 
   // WORKERS
   yield takeLatest(ACTION.FETCH_WORKERS, workersSaga.getAllWorkers);

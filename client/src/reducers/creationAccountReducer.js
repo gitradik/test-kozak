@@ -7,6 +7,7 @@ const initialState = {
         password: "",
     },
     isValid: false,
+    isOpenQuestModal: false,
 };
 
 export default function (state = initialState, action) {
@@ -16,6 +17,20 @@ export default function (state = initialState, action) {
                 ...state,
                 user: action.user,
                 isValid: action.user.isValid,
+            }
+        }
+
+        case ACTION.QUEST_OPEN_MODAL_FORM: {
+            return {
+                ...state,
+                isOpenQuestModal: true,
+            }
+        }
+
+        case ACTION.QUEST_CLOSE_MODAL_FORM: {
+            return {
+                ...state,
+                isOpenQuestModal: false,
             }
         }
 

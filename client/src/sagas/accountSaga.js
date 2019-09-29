@@ -46,7 +46,7 @@ export function * removeMyAccount() {
         const { data } = yield removeAccount();
         setAccessToken("");
         yield localStorage.setItem("access", "");
-        yield put({ type: ACTION.ACCOUNT_RESPONSE, account: data });
+        yield put({ type: ACTION.ACCOUNT_RESPONSE, account: null });
     } catch (err) {
         yield put({ type: ACTION.ACCOUNT_ERROR, error: _.isUndefined(err.response) || err.response.data });
     }

@@ -64,6 +64,7 @@ class ListWorkers extends Component {
             <div className={styles.listWorkers}>
                 <div className={styles.title}>{ this.props.title }</div>
                     <SearchField
+                        dataAos="zoom-in-up" dataAosOffset={0} dataAosDuraction={800}
                         placeholder="search..."
                         onChange={this.onChangeSearchField}
                     />

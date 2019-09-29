@@ -11,6 +11,7 @@ export const creationAccount = (body) => ({ type: ACTION.CREATION_ACCOUNT, body 
 export const loginUserAccount = (body) => ({ type: ACTION.LOGIN_ACCOUNT, body });
 export const creationWorker = (body) => ({ type: ACTION.CREATION_WORKER, body });
 export const putWorkerModalForm = (value) => ({ type: ACTION.PUT_WORKER_MODAL_FORM, value });
+export const questRemoveAccount = value => ({ type: ACTION.QUEST_REMOVE_ACCOUNT_MODAL_FORM, value });
 
 // WORKERS
 export const getWorkers = () => ({ type: ACTION.FETCH_WORKERS, });

@@ -6,7 +6,7 @@ import ListWorkers from "../../components/ListWorkers/ListWorkers";
 import FormButton from "../../components/FormButton/FormButton";
 import {ButtonToolbar} from "react-bootstrap";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import AddWorkerModal from "../../components/AddWorkerModal/AddWorkerModal";
+import BootstrapModal from "../../components/BootstrapModal/BootstrapModal";
 import AddWorkerForm from "../../components/ReduxForms/AddWorkerForm";
 import { addWorker, putWorker, creationWorker, getWorkers, putWorkerModalForm, removeWorker } from '../../actions/actionCreator';
 import ButtonPagination from "../../components/ButtonPagination/ButtonPagination";
@@ -79,7 +79,7 @@ class Home extends Component {
                     }}
                                 fontawesomeIcon="fas fa-user-plus"
                                 content="Add new worker" />
-                    <AddWorkerModal
+                    <BootstrapModal
                         fontaw="fas fa-user-plus"
                         title="Add new worker"
                         show={addModalShow}
@@ -90,7 +90,7 @@ class Home extends Component {
                                             content="add worker"
                                             isDisabled={!this.props.isValid} /></> }
                     />
-                    <AddWorkerModal
+                    <BootstrapModal
                         fontaw="fas fa-user-edit"
                         title="Edit worker"
                         show={this.props.isOpenPut}

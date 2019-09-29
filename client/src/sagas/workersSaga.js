@@ -10,12 +10,6 @@ export function * getAllWorkers() {
         yield put({ type: ACTION.WORKERS_RESPONSE, workers: data.workers, maxCount: data.maxCount });
     } catch (err) {
         yield put({ type: ACTION.WORKERS_ERROR, error: _.isUndefined(err.response) || err.response.data });
-     /*   const isUndefErr = _.isUndefined(err.response);
-        if(!isUndefErr) {
-            if(err.response.data.name === "Unregistered") {
-                history.push('/sign-up');
-            }
-        }*/
     }
 }
 

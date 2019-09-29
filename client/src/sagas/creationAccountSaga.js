@@ -22,3 +22,12 @@ export function * loginUserAccount({body}) {
     }
 }
 
+export function * quesRemoveMyAccount({ value }) {
+    try {
+        if(value) {
+            yield put({ type: ACTION.QUEST_OPEN_MODAL_FORM });
+        } else {
+            yield put({ type: ACTION.QUEST_CLOSE_MODAL_FORM });
+        }
+    } catch (e) {}
+}

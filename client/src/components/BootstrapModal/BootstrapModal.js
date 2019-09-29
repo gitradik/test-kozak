@@ -1,9 +1,9 @@
 import React from "react";
-import styles from './AddWorkerModal.module.sass';
-import './AddWorkerModal.module.sass';
+import styles from './BootstrapModal.module.sass';
+import './BootstrapModal.module.sass';
 import Modal from "react-bootstrap/Modal";
 
-export default function AddWorkerModal(props) {
+export default function BootstrapModal(props) {
     return (
         <Modal
             {...props}
