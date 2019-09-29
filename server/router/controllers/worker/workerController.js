@@ -49,7 +49,7 @@ module.exports.getWorkers = async (req, res, next) => {
 
 module.exports.searchWorkers = async (req, res, next) => {
     const maxCount = await Worker.count();
-    Worker.find({ fullName: req.query.search }, [], { skip: +req.headers.skip, limit: +req.headers.limit })
+    Worker.find({ fullName: req.query.search }, [], { })
         .then(workers => {
             res.send({ workers, maxCount });
         })

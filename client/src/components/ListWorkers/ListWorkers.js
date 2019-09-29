@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import styles from './ListWorkers.module.sass';
 import connect from 'react-redux/es/connect/connect';
 import PropTypes from 'prop-types';
-import history from "../../utils/history";
 import { setWorkerId } from '../../api/rest/config';
 import WorkerChangeButton from "../WorkerChangeButton/WorkerChangeButton";
 import { creationWorker, putWorkerModalForm, searchWorkers } from "../../actions/actionCreator";
@@ -21,8 +20,7 @@ class ListWorkers extends Component {
                 <li data-aos={i % 2 === 0 ? 'fade-right' : 'fade-left'}
                     data-aos-offset={0}
                     data-aos-duraction={(i * 100) + 1000}
-                    key={i}
-                    onClick={() => history.push('/worker/' + _id)}>
+                    key={i}>
                     <div className={styles.actionButtons}>
                         <WorkerChangeButton
                             content="Edit"
