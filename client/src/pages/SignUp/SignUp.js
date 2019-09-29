@@ -28,7 +28,7 @@ class SignUp extends Component {
                     title="Registration"
                     onChange={this.onChangeForm} />
                 <FormButton
-                    content="Submit"
+                    content="SignUp"
                     onClick={this.onSubmitForm}
                     isDisabled={!this.props.isValid}
                 />

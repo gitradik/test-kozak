@@ -1,10 +1,10 @@
 import { put } from 'redux-saga/effects'
 import ACTION from "../actions/actiontsTypes";
-import { signUp, signIn, accountByToken, removeAccount} from '../api/rest/restContoller';
-import { setAccessToken } from '../api/rest/config';
+import { signUp, signIn, accountByToken, removeAccount, updateAccount } from '../api/rest/restContoller';
+import { setAccessToken, config } from '../api/rest/config';
 import _ from 'lodash';
 
-export function * signUpAccount({body}) {
+export function * signUpAccount({ body }) {
     yield put({ type: ACTION.ACCOUNT_REQUEST });
     try {
         const {data} = yield signUp(body);
@@ -16,12 +16,22 @@ export function * signUpAccount({body}) {
     }
 }
 
-export function * signInAccount({body}) {
+export function * signInAccount({ body }) {
     yield put({ type: ACTION.ACCOUNT_REQUEST });
     try {
         const { data } = yield signIn(body);
         setAccessToken(data.token);
         yield localStorage.setItem("access", data.token);
+        yield put({ type: ACTION.ACCOUNT_RESPONSE, account: data });
+    } catch (err) {
+        yield put({ type: ACTION.ACCOUNT_ERROR, error: _.isUndefined(err.response) || err.response.data });
+    }
+}
+
+export function * updateMyAccount({ body }) {
+    yield put({ type: ACTION.ACCOUNT_REQUEST });
+    try {
+        const { data } = yield updateAccount(body);
         yield put({ type: ACTION.ACCOUNT_RESPONSE, account: data });
     } catch (err) {
         yield put({ type: ACTION.ACCOUNT_ERROR, error: _.isUndefined(err.response) || err.response.data });

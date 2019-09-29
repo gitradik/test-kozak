@@ -10,6 +10,7 @@ router.post("/signUp", middleware.validationUserData, middleware.hashPassword, m
 router.post("/signIn", middleware.login, middleware.setToken, accControllers.getAccountByLogin);
 router.post("/token", middleware.tokenViability, accControllers.getAccountByLogin);
 router.delete("/removeAccount", middleware.tokenViability, accControllers.removeAccount);
+router.post("/updateAccount", middleware.tokenViability, middleware.validationUserData, middleware.hashPassword, accControllers.updateAccount);
 
 // WORKERS
 router.get("/workers", middleware.tokenViability, workControllers.getWorkers);

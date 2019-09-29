@@ -13,7 +13,7 @@ class SignInForm extends React.Component {
                 <Field name="login" component={renderTextField} type="text" label="Login" placeholder="Login"/>
             </div>
             <div className={styles.field}>
-                <Field name="password" component={renderTextField} type="text" label="Password" placeholder="Password"/>
+                <Field name="password" component={renderTextField} type="password" label="Password" placeholder="Password"/>
             </div>
         </form>
     }

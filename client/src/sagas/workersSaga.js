@@ -1,5 +1,6 @@
 import { put } from 'redux-saga/effects'
 import ACTION from "../actions/actiontsTypes";
+import { config } from '../api/rest/config';
 import { getWorkers, searchWorkers } from '../api/rest/restContoller';
 import _ from 'lodash';
 

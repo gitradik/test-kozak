@@ -16,7 +16,7 @@ class SignUpForm extends React.Component {
                 <Field name="email" component={renderTextField} type="text" label="Email" placeholder="Email"/>
             </div>
             <div className={styles.field}>
-                <Field name="password" component={renderTextField} type="text" label="Password" placeholder="Password"/>
+                <Field name="password" component={renderTextField} type="password" label="Password" placeholder="Password"/>
             </div>
         </form>
     }

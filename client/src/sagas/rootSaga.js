@@ -11,6 +11,7 @@ function * rootSaga() {
   yield takeLatest(ACTION.SIGN_UP_ACCOUNT, accountSaga.signUpAccount);
   yield takeLatest(ACTION.SIGN_IN_ACCOUNT, accountSaga.signInAccount);
   yield takeLatest(ACTION.REMOVE_ACCOUNT, accountSaga.removeMyAccount);
+  yield takeLatest(ACTION.UPDATE_ACCOUNT, accountSaga.updateMyAccount);
   yield takeLatest(ACTION.CREATION_ACCOUNT, creationAccountSaga.creationUserAccount);
   yield takeLatest(ACTION.ACCOUNT_BY_TOKEN, accountSaga.accountByTokenSaga);
   yield takeLatest(ACTION.LOGIN_ACCOUNT, creationAccountSaga.loginUserAccount);

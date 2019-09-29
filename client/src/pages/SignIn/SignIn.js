@@ -28,7 +28,7 @@ class SignUp extends Component {
                     title="Authorization"
                     onChange={this.onChangeForm} />
                 <FormButton
-                    content="Submit"
+                    content="Login"
                     onClick={this.onSubmitForm}
                     isDisabled={!this.props.isValid}
                 />

@@ -20,7 +20,9 @@ module.exports.hashPassword = async (req, res, next) => {
 };
 
 module.exports.setToken = async (req, res, next) => {
-    req.body.token = await getToken(req.body.login);
+    const log = req.body.login;
+    req.headers.login = log;
+    req.headers.token = await getToken(log);
     next();
 };
 
@@ -37,7 +39,7 @@ module.exports.login = async (req, res, next) => {
 module.exports.tokenViability = async (req, res, next) => {
     try {
         const accessToken = await jwt.verify(req.headers.access_token, SECRET_TOKEN);
-        req.body.login = accessToken.uid;
+        req.headers.login = accessToken.uid;
         if (accessToken.exp > Date.now() / 1000) {
             await next();
         } else {

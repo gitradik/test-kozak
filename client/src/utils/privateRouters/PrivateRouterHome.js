@@ -22,14 +22,12 @@ const PrivateRouterHome = ({component: Component, ...rest}) => {
                 }
                 else {
                     if (_.isNull(rest.account) && !_.isNull(rest.error)) {
-                        if(rest.error.name === "Unregistered") {
-                            return <Redirect
-                                to={{
-                                    pathname: '/sign-up',
-                                    state: {from: props.location}
-                                }}
-                            />;
-                        }
+                        return <Redirect
+                            to={{
+                                pathname: '/sign-up',
+                                state: {from: props.location}
+                            }}
+                        />;
                     } else if(!_.isNull(rest.account) && _.isNull(rest.error)) return <Component {...props} />;
                     else return <></>
                 }
