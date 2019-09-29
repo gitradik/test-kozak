@@ -45,7 +45,7 @@ module.exports.getAccountByLogin = (req, res, next) => {
 };
 
 module.exports.removeAccount = (req, res, next) => {
-    User.remove({ login: req.body.login })
+    User.remove({ login: req.headers.login })
         .then(remoteAccount => res.send({ remoteAccount }))
         .catch(() => next({ path: "account_not_found" }));
 };

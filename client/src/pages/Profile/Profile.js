@@ -67,12 +67,6 @@ class Profile extends React.Component {
             </div>
         );
     }
-
-    componentDidMount() {
-        if(this.props.account) {
-            this.props.creationAccount({ login: this.props.account.login, email: this.props.account.email });
-        }
-    }
 }
 
 const mapStateToProps = (state) => {
