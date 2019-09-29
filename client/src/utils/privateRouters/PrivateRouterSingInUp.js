@@ -8,7 +8,7 @@ import MyLoader from "../../components/MyLoader/MyLoader";
 const PrivateRouterSignInUp = ({component: Component, ...rest}) => {
 
     useEffect(() => {
-        if (!rest.account) {
+        if(_.isNull(rest.account)) {
             rest.getAccountByToken();
         }
     }, []);
@@ -21,7 +21,7 @@ const PrivateRouterSignInUp = ({component: Component, ...rest}) => {
                     return <MyLoader />;
                 }
                 else {
-                    if (!_.isNull(rest.account)) {
+                    if (!_.isNull(rest.account) && _.isNull(rest.error)) {
                         return <Redirect
                             to={{
                                 pathname: '/',
@@ -36,8 +36,8 @@ const PrivateRouterSignInUp = ({component: Component, ...rest}) => {
 };
 
 const mapStateToProps = (state) => {
-    const {account, isFetching, error, } = state.accountReducer;
-    return {account, isFetching, error, };
+    const { account, isFetching, error } = state.accountReducer;
+    return { account, isFetching, error };
 };
 
 const mapDispatchToProps = (dispatch) => ({

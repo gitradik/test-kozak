@@ -8,7 +8,7 @@ import MyLoader from "../../components/MyLoader/MyLoader";
 const PrivateRouterHome = ({component: Component, ...rest}) => {
 
     useEffect(() => {
-        if (!rest.account) {
+        if(_.isNull(rest.account)) {
             rest.getAccountByToken();
         }
     }, []);
@@ -21,13 +21,15 @@ const PrivateRouterHome = ({component: Component, ...rest}) => {
                     return <MyLoader />;
                 }
                 else {
-                    if (_.isNull(rest.account) && _.isNull(rest.error)) {
-                        return <Redirect
-                            to={{
-                                pathname: '/sign-up',
-                                state: {from: props.location}
-                            }}
-                        />;
+                    if (_.isNull(rest.account) && !_.isNull(rest.error)) {
+                        if(rest.error.name === "Unregistered") {
+                            return <Redirect
+                                to={{
+                                    pathname: '/sign-up',
+                                    state: {from: props.location}
+                                }}
+                            />;
+                        }
                     } else return <Component {...props} />;
                 }
             }}

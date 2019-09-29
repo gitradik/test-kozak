@@ -4,6 +4,7 @@ import ACTION from './actiontsTypes';
 export const signUp = (body) => ({ type: ACTION.SIGN_UP_ACCOUNT, body });
 export const signIn = (body) => ({ type: ACTION.SIGN_IN_ACCOUNT, body });
 export const getAccountByToken = () => ({ type: ACTION.ACCOUNT_BY_TOKEN, });
+export const removeAccount = () => ({ type: ACTION.REMOVE_ACCOUNT });
 
 // REDUX FORM
 export const creationAccount = (body) => ({ type: ACTION.CREATION_ACCOUNT, body });

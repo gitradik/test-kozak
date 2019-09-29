@@ -64,7 +64,7 @@ class ListWorkers extends Component {
             <div className={styles.listWorkers}>
                 <div className={styles.title}>{ this.props.title }</div>
                     <SearchField
-                        placeholder="Поиск..."
+                        placeholder="search..."
                         onChange={this.onChangeSearchField}
                     />
                     { this.props.component }

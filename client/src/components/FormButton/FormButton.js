@@ -4,11 +4,11 @@ import PropTypes from 'prop-types';
 
 class FormButton extends Component {
     render() {
-        const {content, isDisabled, variant, className, dataAos, dataAosOffset, dataAosDuraction} = this.props;
+        const {content, isDisabled, variant, className, dataAos, dataAosOffset, dataAosDuraction, fontawesomeIcon } = this.props;
         return (
             <button data-aos={dataAos} data-aos-offset={dataAosOffset} data-aos-duraction={dataAosDuraction}
                 variant={variant} onClick={this.props.onClick} className={[styles.formButton, className, isDisabled && styles.disabled].join(' ')} disabled={isDisabled}>
-                <i className={ this.props.fontawesomeIcon }/>
+                { fontawesomeIcon && <i className={ this.props.fontawesomeIcon }/> }
                <span>{content}</span>
             </button>
         );

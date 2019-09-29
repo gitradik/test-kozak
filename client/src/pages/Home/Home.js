@@ -123,10 +123,11 @@ class Home extends Component {
     }
 
     componentDidMount() {
-        this.props.getWorkers();
         const AOS = require('aos');
         this.aos = AOS;
         this.aos.init();
+        const { account, getWorkers } = this.props;
+        setTimeout(() => account && getWorkers(), 0);
     }
 
     componentDidUpdate() {
@@ -137,7 +138,8 @@ class Home extends Component {
 const mapStateToProps = (state) => {
     const { worker, isValid, isOpenPut} = state.creationWorkerReducer;
     const { workers, isFetching, maxCount } = state.workersReducer;
-    return { worker, isValid, workers, isFetching, maxCount, isOpenPut };
+    const { account } = state.accountReducer;
+    return { account, worker, isValid, workers, isFetching, maxCount, isOpenPut };
 };
 
 const mapDispatchToProps = (dispatch) => ({
